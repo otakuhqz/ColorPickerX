@@ -7,7 +7,7 @@ android {
     compileSdkVersion sdkVersion
     buildToolsVersion toolsVersion
     defaultConfig {
-        applicationId "petrov.kristiyan.colorpicker_sample"
+        applicationId "com.saggitt.colorpicker_sample"
         minSdkVersion 16
         targetSdkVersion sdkVersion
         versionCode 1
