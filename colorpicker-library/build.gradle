@@ -2,24 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-def gitHubUsername = "kristiyanP"
-def gitHubProjectName = "colorpicker"
-
-// start - do not modify this if your project is on github
-def siteUrl = "https://github.com/${gitHubUsername}/${gitHubProjectName}"
-def gitUrl = siteUrl + '.git'
-def bugTrackerUrl = siteUrl + '/issues/'
-def projectName = gitHubProjectName
-// end - do not modify this if your project is on github
-
-def projectDesc = "A simple color picker library for Android Edit"
-def projectGroup = "petrov.kristiyan"
-def projectLicenses = ["Apache-2.0"]
-def projectLicenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-def projectKeywords = ['color', 'library', 'colorpicker','android']
-def developerFullName = "Kristiyan Petrov"
-group = projectGroup
-version = "1.1.10"
+version = "1.1.11"
 
 def sdkVersion = 28
 def toolsVersion = '28.0.3'
@@ -56,68 +39,6 @@ dependencies {
     testImplementation'junit:junit:4.12'
 }
 
-// add the following information to the file: local.properties situated in the parent directory of
-// where this file is:
-//
-// bintray.user=yourusername
-// bintray.apikey=api key got from the bintray profile
-//
-// be sure to add local.properties to the .gitignore!
-
-Properties properties = new Properties()
-if (project.rootProject.file("local.properties").exists()) {
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-}
-
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            name projectName
-            description projectDesc
-            packaging 'aar'
-            groupId projectGroup
-            version version
-            url siteUrl
-            licenses {
-                license {
-                    name projectLicenses[0]
-                    url projectLicenseUrl
-                }
-            }
-            developers {
-                developer {
-                    id properties.getProperty("bintray.user")
-                    name developerFullName
-                }
-            }
-            scm {
-                connection gitUrl
-                developerConnection gitUrl
-                url siteUrl
-
-            }
-        }
-    }
-}
-
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = projectName
-        desc = projectDesc
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        issueTrackerUrl = bugTrackerUrl
-        licenses = projectLicenses
-        labels = projectKeywords
-        publicDownloadNumbers = true
-        publish = true
-    }
-}
-
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -134,8 +55,8 @@ task javadoc(type: Javadoc) {
         locale = 'en_US'
         encoding = 'UTF-8'
         charSet = 'UTF-8'
-        links("http://docs.oracle.com/javase/7/docs/api/");
-        linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference");
+        links("http://docs.oracle.com/javase/7/docs/api/")
+        linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference")
         setMemberLevel(JavadocMemberLevel.PUBLIC)
     }
 }
