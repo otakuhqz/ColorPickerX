@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.saggitt.colorpickerlib.ColorPicker;
-import com.saggitt.colorpickerlib.OnChooseColorListener;
+import com.saggitt.colorpickerx.ColorPicker;
+import com.saggitt.colorpickerx.OnChooseColorListener;
 
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class SampleActivity extends AppCompatActivity {
 
