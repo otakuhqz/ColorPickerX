@@ -18,7 +18,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
-package com.saggitt.colorpickerlib;
+package com.saggitt.colorpickerx;
 
 import android.content.Context;
 import android.os.Bundle;

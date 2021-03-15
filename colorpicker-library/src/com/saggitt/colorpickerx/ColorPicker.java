@@ -18,7 +18,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
-package com.saggitt.colorpickerlib;
+package com.saggitt.colorpickerx;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -38,11 +38,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.saggitt.colorpickerlib.R;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import static com.saggitt.colorpickerlib.ColorUtils.dip2px;
-import static com.saggitt.colorpickerlib.ColorUtils.getDimensionDp;
+import static com.saggitt.colorpickerx.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.ColorUtils.getDimensionDp;
 
 public class ColorPicker {
     private OnChooseColorListener onChooseColorListener;

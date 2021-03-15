@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerlib;
+package com.saggitt.colorpickerx;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +44,7 @@ public class CustomPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view==object;
+        return view == object;
     }
 
     @NonNull
@@ -56,10 +56,9 @@ public class CustomPagerAdapter extends PagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        if(position<0||position>=mTitles.length){
+        if (position < 0 || position >= mTitles.length) {
             return "";
-        }
-        else{
+        } else {
             return mTitles[position];
         }
     }

@@ -18,7 +18,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
-package com.saggitt.colorpickerlib;
+package com.saggitt.colorpickerx;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -35,9 +35,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.saggitt.colorpickerlib.R;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-
 
 public class ColorViewAdapter extends RecyclerView.Adapter<ColorViewAdapter.ViewHolder> {
 
@@ -96,7 +97,7 @@ public class ColorViewAdapter extends RecyclerView.Adapter<ColorViewAdapter.View
     }
 
     private void dismissDialog() {
-        if(mDialog == null)
+        if (mDialog == null)
             return;
         Dialog dialog = mDialog.get();
         if (dialog != null && dialog.isShowing()) {

@@ -15,11 +15,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+package com.saggitt.colorpickerx;
 
-package com.saggitt.colorpickerlib;
-
-public interface OnFastChooseColorListener {
-    void setOnFastChooseColorListener(int position, int color);
+public interface OnChooseColorListener {
+    void onChooseColor(int position, int color);
 
     void onCancel();
 }

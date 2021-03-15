@@ -19,7 +19,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 DEALINGS IN THE SOFTWARE.
 */
 
-package com.saggitt.colorpickerlib;
+package com.saggitt.colorpickerx;
 
 public class ColorPal {
     private int color;

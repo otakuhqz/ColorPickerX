@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerlib;
+package com.saggitt.colorpickerx;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -37,12 +37,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.saggitt.colorpickerlib.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import static com.saggitt.colorpickerlib.ColorUtils.dip2px;
-import static com.saggitt.colorpickerlib.ColorUtils.getDimensionDp;
+import static com.saggitt.colorpickerx.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.ColorUtils.getDimensionDp;
 
 public class ColorPickerTab {
 
