@@ -1,5 +1,5 @@
 /*
- *  This file is part of ColorPickerLib
+ *  This file is part of ColorPickerX
  *  Copyright (c) 2021   Saul Henriquez
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ public class ColorPickerTab {
     private ColorViewAdapter colorViewAdapter;
     private boolean fastChooser;
     private TypedArray ta;
-    private Context mContext;
+    private final Context mContext;
     private int columns;
     private String title;
     private int marginLeft, marginRight, marginTop, marginBottom;
@@ -79,7 +79,7 @@ public class ColorPickerTab {
     private boolean disableDefaultButtons;
     private final AppCompatButton positiveButton;
     private final AppCompatButton negativeButton;
-    private View tabPresets;
+    private final View tabPresets;
 
     public ColorPickerTab(Context context) {
         dialogViewLayout = LayoutInflater.from(context).inflate(R.layout.dialog_color_selector, null, false);

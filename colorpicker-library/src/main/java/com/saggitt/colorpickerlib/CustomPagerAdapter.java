@@ -1,5 +1,5 @@
 /*
- *  This file is part of ColorPickerLib
+ *  This file is part of ColorPickerX
  *  Copyright (c) 2021   Saul Henriquez
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -25,17 +25,17 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 
 public class CustomPagerAdapter extends PagerAdapter {
-    private View []mLists;
-    private String []mTitles;
+    private final View[] mLists;
+    private final String[] mTitles;
 
-    public CustomPagerAdapter(View []lists, String []titles){
+    public CustomPagerAdapter(View[] lists, String[] titles) {
         mLists = lists;
         mTitles = titles;
     }
 
     @Override
     public int getCount() {
-        if(mLists!=null)
+        if (mLists != null)
             return mLists.length;
         else
             return 0;
