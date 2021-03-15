@@ -449,7 +449,7 @@ public class ColorPicker {
      */
     public
     @Nullable
-    CustomDialog getmDialog() {
+    CustomDialog getDialog() {
         if (mDialog == null)
             return null;
         return mDialog.get();
