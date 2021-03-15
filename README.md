@@ -1,19 +1,19 @@
-#ColorPickerLib
+# ColorPicker
 
 # A simple Android color picker library
 
-![screen1](https://raw.github.com/kristiyanP/colorpicker/master/screen1.png)
+![screen1](https://raw.github.com/otakuhqz/colorpicker/master/screen1.png)
 
-![screen2](https://raw.github.com/kristiyanP/colorpicker/master/screen2.png)
+![screen2](https://raw.github.com/otakuhqz/colorpicker/master/screen2.png)
 
-![screen3](https://raw.github.com/kristiyanP/colorpicker/master/screen3.png)
+![screen3](https://raw.github.com/otakuhqz/colorpicker/master/screen3.png)
 
 ## Download ##
 
-Download the [latest JAR](https://bintray.com/petrovkristiyan/maven/petrov.kristiyan.colorpicker/view) or grab via Gradle:
+Download the [latest JAR](https://github.com/otakuhqz/colorpicker/packages/670377) or grab via Gradle:
 
 ```groovy
-implementation 'com.saggitt:colorpicker-library:1.1.10'
+implementation 'com.github.otakuhqz:colorpicker-library:1.1.10'
 ```
 
 ## How to use ##
@@ -79,7 +79,6 @@ colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
 .show();
 ```
 
-
 ## What you can do ##
 
 Choose your own colors
@@ -91,7 +90,6 @@ setColors(int... colorsList); // use a list of colors Color.RED,Color.Black etc
 setDefaultColorButton(int color); // set the colorButton to check by default
 ```
 
-
 Define Listeners
 
 ```java
@@ -99,14 +97,12 @@ setOnFastChooseColorListener(OnFastChooseColorListener listener); // renamed in 
 setOnChooseColorListener(OnChooseColorListener listener);
 ```
 
-
 Add custom buttons
 
 ```java
 addListenerButton(String text, Button button, OnButtonListener listener); // custom button
 addListenerButton(String text, final OnButtonListener listener); // it will generate a button with default style
 ```
-
 
 General methods you can use:
 
@@ -126,7 +122,6 @@ getNegativeButton(); // returns the negative button defined by default
 setDismissOnButtonListenerClick(boolean dismiss); // renamed in version 1.1.0
 ```
 
-
 ColorButtons changes you can do:
 
 ```java
@@ -135,14 +130,6 @@ setColorButtonDrawable(int drawable);
 setColorButtonSize(int width, int height);
 setColorButtonMargin(int left, int top, int right, int bottom);
 setRoundColorButton(boolean roundButton);
-```
-
-
-Removed from version 1.1.0
-
-```java
-setPositiveButton(String text, OnButtonListener listener); // not present from version 1.1.0 
-setNegativeButton(String text, OnButtonListener listener); // not present from version 1.1.0
 ```
 
 ## Credits
