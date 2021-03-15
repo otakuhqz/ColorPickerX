@@ -35,13 +35,6 @@
         android:gravity="end">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/positive"
-            style="@style/ActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/lite_blue" />
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/negative"
             style="@style/ActionButton"
             android:layout_width="wrap_content"
@@ -49,6 +42,13 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:textColor="@color/black_de" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/positive"
+            style="@style/ActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lite_blue" />
     </LinearLayout>
 
 
