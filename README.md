@@ -13,7 +13,7 @@
 Download the [latest JAR](https://github.com/otakuhqz/colorpicker/packages/670377) or grab via Gradle:
 
 ```groovy
-implementation 'com.github.otakuhqz:colorpicker-library:1.1.10'
+implementation 'com.github.otakuhqz:colorpicker:1.1.10'
 ```
 
 ## How to use ##
