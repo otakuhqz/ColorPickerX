@@ -1,10 +1,10 @@
 # ColorPickerX
+
+### A simple Android color picker library
 [![GitHub release](https://img.shields.io/github/release/otakuhqz/ColorPickerX.svg?style=for-the-badge)](https://github.com/otakuhqz/ColorPickerX/releases)
 [![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://github.com/otakuhqz/colorpickerx/blob/main/LICENSE)
-[![Donate](https://img.shields.io/badge/Paypal-Donate-blue?style=for-the-badge&logo=paypal)](https://www.paypal.com/paypalme/saulhenriquez)
+[![Donate](https://img.shields.io/badge/Paypal-Donate-red?style=for-the-badge&logo=paypal)](https://www.paypal.com/paypalme/saulhenriquez)
 
-
-# A simple Android color picker library
 <table>
     <tr>
         <td><img src="https://raw.github.com/otakuhqz/colorpicker/master/screen1.png" width="256" /></td>
