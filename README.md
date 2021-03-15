@@ -5,12 +5,15 @@
 
 
 # A simple Android color picker library
-
-![screen1](https://raw.github.com/otakuhqz/colorpicker/master/screen1.png)
-
-![screen2](https://raw.github.com/otakuhqz/colorpicker/master/screen2.png)
-
-![screen3](https://raw.github.com/otakuhqz/colorpicker/master/screen3.png)
+<table>
+    <tr>
+        <td><img src="https://raw.github.com/otakuhqz/colorpicker/master/screen1.png" width="256" /></td>
+        <td><img src="https://raw.github.com/otakuhqz/colorpicker/master/screen3.png" width="256" /></td>
+    </tr>
+    <tr>
+        <td><img src="https://raw.github.com/otakuhqz/colorpicker/master/screen2.png" width="256" /></td>
+    </tr>
+</table>
 
 ## Download ##
 
