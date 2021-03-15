@@ -1,4 +1,4 @@
-# ColorPicker
+# ColorPickerX
 
 # A simple Android color picker library
 
@@ -13,8 +13,15 @@
 Download the [latest JAR](https://github.com/otakuhqz/colorpicker/packages/670377) or grab via Gradle:
 
 ```groovy
-implementation 'com.github.otakuhqz:colorpicker:1.1.10'
+implementation 'com.github.otakuhqz:colorpickerx:1.1.10'
 ```
+## Donations <br/>
+<a href="https://www.buymeacoffee.com/2ulp4f5" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png"
+    alt="Buy Me A Coffee" width="150" >
+</a><br/>
+
+[![Donate](https://img.shields.io/badge/Paypal-Donate-blue?style=for-the-badge&logo=paypal)](https://www.paypal.com/paypalme/saulhenriquez)
 
 ## How to use ##
 
