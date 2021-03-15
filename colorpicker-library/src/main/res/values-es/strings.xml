@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="colorpicker_dialog_title">Escoja el color</string>
+    <string name="colorpicker_dialog_cancel">Cancelar</string>
+    <string name="colorpicker_dialog_ok">Aceptar</string>
+    <string name="color_presets">Predeterminado</string>
+    <string name="color_custom">Personalizado</string>
+</resources>
