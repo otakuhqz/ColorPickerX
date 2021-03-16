@@ -23,13 +23,12 @@ package com.saggitt.colorpickerx;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.os.Build;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -53,19 +52,20 @@ public class ColorViewAdapter extends RecyclerView.Adapter<ColorViewAdapter.View
     private int buttonDrawable;
     private WeakReference<CustomDialog> mDialog;
 
-
     public class ViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
 
         public AppCompatButton colorItem;
+        public ImageView checkMark;
 
         public ViewHolder(View v) {
             super(v);
             //buttons settings
             colorItem = v.findViewById(R.id.color);
+            checkMark = v.findViewById(R.id.check_mark);
             colorItem.setTextColor(tickColor);
             colorItem.setBackgroundResource(buttonDrawable);
             colorItem.setOnClickListener(this);
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) colorItem.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) colorItem.getLayoutParams();
             layoutParams.setMargins(marginButtonLeft, marginButtonTop, marginButtonRight, marginButtonBottom);
             if (buttonWidth != -1)
                 layoutParams.width = buttonWidth;
@@ -73,7 +73,7 @@ public class ColorViewAdapter extends RecyclerView.Adapter<ColorViewAdapter.View
                 layoutParams.height = buttonHeight;
 
             //relative layout settings
-            LinearLayout linearLayout = v.findViewById(R.id.linearLayout);
+            RelativeLayout linearLayout = v.findViewById(R.id.linearLayout);
             GridLayoutManager.LayoutParams lp = (GridLayoutManager.LayoutParams) linearLayout.getLayoutParams();
             lp.setMargins(marginLeft, marginTop, marginRight, marginBottom);
         }
@@ -137,14 +137,17 @@ public class ColorViewAdapter extends RecyclerView.Adapter<ColorViewAdapter.View
         int textColor = ColorUtils.isWhiteText(color) ? Color.WHITE : Color.BLACK;
 
         if (mDataset.get(position).isCheck()) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 holder.colorItem.setText("✔");
             } else {
 
                 holder.colorItem.setText(Html.fromHtml("&#x2713;"));
-            }
-        } else
-            holder.colorItem.setText("");
+            }*/
+            holder.checkMark.setVisibility(View.VISIBLE);
+        } else {
+            //holder.colorItem.setText("");
+            holder.checkMark.setVisibility(View.GONE);
+        }
 
         holder.colorItem.setTextColor(tickColor == Color.WHITE ? textColor : tickColor);
         if (buttonDrawable != 0) {

@@ -100,7 +100,7 @@ public class ColorPicker {
         this.negativeText = context.getString(R.string.colorpicker_dialog_cancel);
         this.positiveText = context.getString(R.string.colorpicker_dialog_ok);
         this.default_color = 0;
-        this.columns = 5;
+        this.columns = 4;
     }
 
     /**
