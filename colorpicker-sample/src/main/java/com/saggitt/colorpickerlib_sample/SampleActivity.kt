@@ -60,6 +60,32 @@ class SampleActivity : AppCompatActivity() {
                     .addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
         }
 
+        val dialogButton2 = findViewById<MaterialButton>(R.id.dialog_button_square)
+        dialogButton2.setOnClickListener {
+            val colorPicker = ColorPicker(this@SampleActivity)
+            val colors = ArrayList<String>()
+            colors.add("#82B926")
+            colors.add("#a276eb")
+            colors.add("#6a3ab2")
+            colors.add("#666666")
+            colors.add("#FFFF00")
+            colors.add("#3C8D2F")
+            colors.add("#FA9F00")
+            colors.add("#FF0000")
+            colorPicker
+                    .setDefaultColorButton(Color.parseColor("#f84c44"))
+                    .setColors(colors)
+                    .setColumns(5)
+                    .setOnChooseColorListener(object : OnChooseColorListener {
+                        override fun onChooseColor(position: Int, color: Int) {
+                            Log.d("position", "" + position)
+                        }
+
+                        override fun onCancel() {}
+                    })
+                    .addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
+        }
+
         /*DISABLED*/
         /*
         val tabbedButton = findViewById<MaterialButton>(R.id.tab_dialog_button)
