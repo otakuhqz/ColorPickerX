@@ -23,6 +23,7 @@ package com.saggitt.colorpickerx;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -137,16 +138,17 @@ public class ColorViewAdapter extends RecyclerView.Adapter<ColorViewAdapter.View
         int textColor = ColorUtils.isWhiteText(color) ? Color.WHITE : Color.BLACK;
 
         if (mDataset.get(position).isCheck()) {
-            /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                 holder.colorItem.setText("✔");
+                holder.checkMark.setVisibility(View.GONE);
             } else {
-
-                holder.colorItem.setText(Html.fromHtml("&#x2713;"));
-            }*/
-            holder.checkMark.setVisibility(View.VISIBLE);
+                holder.checkMark.setVisibility(View.VISIBLE);
+            }
         } else {
-            //holder.colorItem.setText("");
             holder.checkMark.setVisibility(View.GONE);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                holder.colorItem.setText("");
+            }
         }
 
         holder.colorItem.setTextColor(tickColor == Color.WHITE ? textColor : tickColor);
