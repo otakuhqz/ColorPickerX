@@ -15,13 +15,99 @@
   ~  You should have received a copy of the GNU General Public License
   ~  along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:divider="?android:attr/dividerHorizontal"
+    android:id="@+id/tab_custom">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:id="@+id/tab_custom">
+        android:padding="22dp">
+
+        <com.saggitt.colorpickerx.CustomPickerSelector
+            android:id="@+id/cpx_color_picker_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cpx_borderColor="#646464"
+            app:cpx_alphaChannelVisible="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignLeft="@id/cpx_color_picker_selector"
+            android:layout_alignRight="@id/cpx_color_picker_selector"
+            android:layout_below="@id/cpx_color_picker_selector"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <com.saggitt.colorpickerx.PanelView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:id="@+id/cpx_color_panel_current"
+                app:cpx_borderColor="#646464"
+                app:cpx_colorShape="square" />
+
+            <ImageView
+                android:id="@+id/check_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/arrow_forward" />
+
+            <com.saggitt.colorpickerx.PanelView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:id="@+id/cpx_color_panel_new"
+                app:cpx_borderColor="#646464"
+                app:cpx_colorShape="square" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
+                android:gravity="right"
+                android:orientation="horizontal"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="#"
+                    android:typeface="monospace"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/cpx_hex"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789ABCDEFabcdef"
+                    android:focusable="true"
+                    android:imeOptions="actionGo"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:typeface="monospace" />
+
+            </LinearLayout>
+        </LinearLayout>
 
     </RelativeLayout>
-</merge>
+
+</LinearLayout>

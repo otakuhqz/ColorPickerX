@@ -21,23 +21,27 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.saggitt.colorpickerlib.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -45,7 +49,7 @@ import java.util.ArrayList;
 import static com.saggitt.colorpickerx.ColorUtils.dip2px;
 import static com.saggitt.colorpickerx.ColorUtils.getDimensionDp;
 
-public class ColorPickerTab {
+public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListener, TextWatcher {
 
     private OnChooseColorListener onChooseColorListener;
     private OnFastChooseColorListener onFastChooseColorListener;
@@ -60,7 +64,6 @@ public class ColorPickerTab {
     private TypedArray ta;
     private final Context mContext;
     private int columns;
-    private String title;
     private int marginLeft, marginRight, marginTop, marginBottom;
     private int tickColor;
     private int marginColorButtonLeft, marginColorButtonRight, marginColorButtonTop, marginColorButtonBottom;
@@ -75,25 +78,36 @@ public class ColorPickerTab {
     private final RecyclerView recyclerView;
     private final LinearLayout buttons_layout;
     private int default_color;
-    private int paddingTitleLeft, paddingTitleRight, paddingTitleBottom, paddingTitleTop;
     private final View dialogViewLayout;
     private boolean disableDefaultButtons;
     private final AppCompatButton positiveButton;
     private final AppCompatButton negativeButton;
     private final View tabPresets;
+    private final View tabCustom;
+
+    EditText hexEditText;
+    PanelView newColorPanel;
+    PanelView oldColorPanel;
+    CustomPickerSelector colorPicker;
+    private boolean fromEditText;
+    boolean showAlphaSlider;
+    @ColorInt
+    int color;
+    ViewPager viewPager;
+    TabLayout tabLayout;
 
     public ColorPickerTab(Context context) {
-        dialogViewLayout = LayoutInflater.from(context).inflate(R.layout.dialog_color_selector, null, false);
-        View tabCustom = dialogViewLayout.findViewById(R.id.tab_custom);
+        dialogViewLayout = LayoutInflater.from(context).inflate(R.layout.color_selector_tabbed, null, false);
+        tabCustom = dialogViewLayout.findViewById(R.id.tab_custom);
         tabPresets = dialogViewLayout.findViewById(R.id.tab_presets);
         View[] views = {tabCustom, tabPresets};
         String[] titles = {context.getString(R.string.color_custom), context.getString(R.string.color_presets)};
 
-        ViewPager viewPager = dialogViewLayout.findViewById(R.id.color_pager);
+        viewPager = dialogViewLayout.findViewById(R.id.color_pager);
         viewPager.setOffscreenPageLimit(1);
         viewPager.setAdapter(new CustomPagerAdapter(views, titles));
 
-        TabLayout tabLayout = dialogViewLayout.findViewById(R.id.color_tabs);
+        tabLayout = dialogViewLayout.findViewById(R.id.color_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
 
@@ -105,11 +119,149 @@ public class ColorPickerTab {
         mContext = context;
         this.dismiss = true;
         this.marginColorButtonLeft = this.marginColorButtonTop = this.marginColorButtonRight = this.marginColorButtonBottom = 5;
-        this.title = context.getString(R.string.colorpicker_dialog_title);
         this.negativeText = context.getString(R.string.colorpicker_dialog_cancel);
         this.positiveText = context.getString(R.string.colorpicker_dialog_ok);
         this.default_color = 0;
-        this.columns = 4;
+        this.columns = 5;
+
+        hexEditText = dialogViewLayout.findViewById(R.id.cpx_hex);
+        oldColorPanel = dialogViewLayout.findViewById(R.id.cpx_color_panel_current);
+        newColorPanel = dialogViewLayout.findViewById(R.id.cpx_color_panel_new);
+        colorPicker = dialogViewLayout.findViewById(R.id.cpx_color_picker_selector);
+
+        color = Color.BLUE;
+        colorPicker.setAlphaSliderVisible(showAlphaSlider);
+        oldColorPanel.setColor(color);
+        colorPicker.setColor(color, true);
+        newColorPanel.setColor(color);
+        setHex(color);
+        if (!showAlphaSlider) {
+            hexEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
+        }
+
+        newColorPanel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (newColorPanel.getColor() == color) {
+                    onColorSelected(color);
+                    //dismiss();
+                }
+            }
+        });
+        colorPicker.setOnColorChangedListener(this);
+        hexEditText.addTextChangedListener(this);
+
+        hexEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(hexEditText, InputMethodManager.SHOW_IMPLICIT);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        if (hexEditText.isFocused()) {
+            int color = parseColorString(s.toString());
+            if (color != colorPicker.getColor()) {
+                fromEditText = true;
+                colorPicker.setColor(color, true);
+            }
+        }
+    }
+
+    @Override
+    public void onColorChanged(int newColor) {
+        color = newColor;
+        if (newColorPanel != null) {
+            newColorPanel.setColor(newColor);
+        }
+        if (!fromEditText && hexEditText != null) {
+            setHex(newColor);
+            if (hexEditText.hasFocus()) {
+                InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(hexEditText.getWindowToken(), 0);
+                hexEditText.clearFocus();
+            }
+        }
+        fromEditText = false;
+    }
+
+    private void onColorSelected(int color) {
+
+    }
+
+    private void setHex(int color) {
+        if (showAlphaSlider) {
+            hexEditText.setText(String.format("%08X", (color)));
+        } else {
+            hexEditText.setText(String.format("%06X", (0xFFFFFF & color)));
+        }
+    }
+
+    private int parseColorString(String colorString) throws NumberFormatException {
+        int a, r, g, b = 0;
+        if (colorString.startsWith("#")) {
+            colorString = colorString.substring(1);
+        }
+        if (colorString.length() == 0) {
+            r = 0;
+            a = 255;
+            g = 0;
+        } else if (colorString.length() <= 2) {
+            a = 255;
+            r = 0;
+            b = Integer.parseInt(colorString, 16);
+            g = 0;
+        } else if (colorString.length() == 3) {
+            a = 255;
+            r = Integer.parseInt(colorString.substring(0, 1), 16);
+            g = Integer.parseInt(colorString.substring(1, 2), 16);
+            b = Integer.parseInt(colorString.substring(2, 3), 16);
+        } else if (colorString.length() == 4) {
+            a = 255;
+            r = Integer.parseInt(colorString.substring(0, 2), 16);
+            g = r;
+            r = 0;
+            b = Integer.parseInt(colorString.substring(2, 4), 16);
+        } else if (colorString.length() == 5) {
+            a = 255;
+            r = Integer.parseInt(colorString.substring(0, 1), 16);
+            g = Integer.parseInt(colorString.substring(1, 3), 16);
+            b = Integer.parseInt(colorString.substring(3, 5), 16);
+        } else if (colorString.length() == 6) {
+            a = 255;
+            r = Integer.parseInt(colorString.substring(0, 2), 16);
+            g = Integer.parseInt(colorString.substring(2, 4), 16);
+            b = Integer.parseInt(colorString.substring(4, 6), 16);
+        } else if (colorString.length() == 7) {
+            a = Integer.parseInt(colorString.substring(0, 1), 16);
+            r = Integer.parseInt(colorString.substring(1, 3), 16);
+            g = Integer.parseInt(colorString.substring(3, 5), 16);
+            b = Integer.parseInt(colorString.substring(5, 7), 16);
+        } else if (colorString.length() == 8) {
+            a = Integer.parseInt(colorString.substring(0, 2), 16);
+            r = Integer.parseInt(colorString.substring(2, 4), 16);
+            g = Integer.parseInt(colorString.substring(4, 6), 16);
+            b = Integer.parseInt(colorString.substring(6, 8), 16);
+        } else {
+            b = -1;
+            g = -1;
+            r = -1;
+            a = -1;
+        }
+        return Color.argb(a, r, g, b);
     }
 
     /**
@@ -179,13 +331,6 @@ public class ColorPickerTab {
         if (colors == null || colors.isEmpty())
             setColors();
 
-        AppCompatTextView titleView = dialogViewLayout.findViewById(R.id.title);
-        if (title != null) {
-            titleView.setText(title);
-            titleView.setPadding(
-                    dip2px(paddingTitleLeft, mContext), dip2px(paddingTitleTop, mContext),
-                    dip2px(paddingTitleRight, mContext), dip2px(paddingTitleBottom, mContext));
-        }
         mDialog = new WeakReference<>(new CustomDialog(mContext, dialogViewLayout));
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mContext, columns);
@@ -194,10 +339,10 @@ public class ColorPickerTab {
             colorViewAdapter = new ColorViewAdapter(colors, onFastChooseColorListener, mDialog);
         else
             colorViewAdapter = new ColorViewAdapter(colors);
-
         if (fullHeight) {
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-            lp.addRule(RelativeLayout.BELOW, titleView.getId());
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT);
+            //lp.addRule(RelativeLayout.BELOW, titleView.getId());
             lp.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
             recyclerView.setLayoutParams(lp);
         }
@@ -236,12 +381,15 @@ public class ColorPickerTab {
 
         positiveButton.setText(positiveText);
         negativeButton.setText(negativeText);
-
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onChooseColorListener != null && !fastChooser)
-                    onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
+                    if (viewPager.getCurrentItem() == 0) {
+                        onChooseColorListener.onChooseColor(-1, newColorPanel.getColor());
+                    } else {
+                        onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
+                    }
                 if (dismiss) {
                     dismissDialog();
                     if (onFastChooseColorListener != null) {
@@ -250,7 +398,6 @@ public class ColorPickerTab {
                 }
             }
         });
-
         negativeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -272,7 +419,8 @@ public class ColorPickerTab {
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
-            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.90);
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }
@@ -287,17 +435,6 @@ public class ColorPickerTab {
      */
     public ColorPickerTab setColumns(int c) {
         columns = c;
-        return this;
-    }
-
-    /**
-     * Define the title of the Material Dialog
-     *
-     * @param title Title
-     * @return this
-     */
-    public ColorPickerTab setTitle(String title) {
-        this.title = title;
         return this;
     }
 
@@ -480,7 +617,7 @@ public class ColorPickerTab {
      */
     public
     @Nullable
-    CustomDialog getmDialog() {
+    CustomDialog getDialog() {
         if (mDialog == null)
             return null;
         return mDialog.get();
@@ -556,10 +693,6 @@ public class ColorPickerTab {
      * @return this
      */
     public ColorPickerTab setTitlePadding(int left, int top, int right, int bottom) {
-        paddingTitleLeft = left;
-        paddingTitleRight = right;
-        paddingTitleTop = top;
-        paddingTitleBottom = bottom;
         return this;
     }
 

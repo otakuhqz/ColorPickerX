@@ -7,13 +7,11 @@
         <item name="android:minWidth">@dimen/action_button_min_width</item>
         <item name="android:paddingLeft">@dimen/action_button_padding_horizontal</item>
         <item name="android:paddingRight">@dimen/action_button_padding_horizontal</item>
-        <item name="android:background">@drawable/button</item>
+        <item name="android:background">@drawable/tab_indicator</item>
         <item name="android:textSize">@dimen/action_button_text_size</item>
     </style>
 
-
-    <style name="MaterialDialog.Light" parent="Theme.AppCompat.Light.Dialog">
-        <item name="tabIndicator">@drawable/tab_indicator</item>
-        <item name="android:background">?colorBackgroundFloating</item>
+    <style name="MaterialDialog.Light" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorColor">@color/color4</item>
     </style>
 </resources>

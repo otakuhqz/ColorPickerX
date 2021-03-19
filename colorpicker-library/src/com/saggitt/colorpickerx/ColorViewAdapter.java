@@ -35,8 +35,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.saggitt.colorpickerlib.R;
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 

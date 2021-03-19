@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<!--
   ~  This file is part of ColorPickerX
   ~  Copyright (c) 2021   Saul Henriquez
   ~
@@ -16,14 +16,14 @@
   ~  along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:id="@+id/tab_presets">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/color_palette"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?attr/colorControlNormal"
+    android:autoMirrored="true">
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M12,4l-1.41,1.41L16.17,11H4v2h12.17l-5.58,5.59L12,20l8,-8z" />
+</vector>

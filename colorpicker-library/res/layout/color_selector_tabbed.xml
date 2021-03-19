@@ -23,19 +23,50 @@
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_scrollFlags="scroll|enterAlways"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:theme="@style/MaterialDialog.Light"
-        android:id="@+id/color_tabs" />
+        android:layout_marginBottom="2dp"
+        android:id="@+id/color_tabs"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:tabIndicatorHeight="2dp" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/color_pager"
+        android:layout_below="@id/color_tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="375dp">
 
         <include layout="@layout/color_palette_custom" />
 
         <include layout="@layout/color_palette_presets" />
+
     </androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/color_pager"
+        android:id="@+id/buttons_layout"
+        android:gravity="end">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/negative"
+            style="@style/ActionButton"
+            android:text="@string/colorpicker_dialog_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/black_de" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/positive"
+            style="@style/ActionButton"
+            android:text="@string/colorpicker_dialog_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/lite_blue" />
+    </LinearLayout>
+
 </RelativeLayout>

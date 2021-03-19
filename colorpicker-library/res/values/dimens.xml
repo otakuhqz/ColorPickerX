@@ -7,4 +7,6 @@
     <dimen name="action_button_text_size">14sp</dimen>
     <dimen name="action_button_min_width">56dp</dimen>
     <dimen name="action_button_padding_horizontal">4dp</dimen>
+
+    <dimen name="cpx_required_padding">6dp</dimen>
 </resources>

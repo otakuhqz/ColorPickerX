@@ -105,7 +105,7 @@ class SampleActivity : AppCompatActivity() {
                     .setColumns(5)
                     .setOnChooseColorListener(object : OnChooseColorListener {
                         override fun onChooseColor(position: Int, color: Int) {
-                            Log.d("position", "" + position)
+                            Log.d("position", "" + color)
                         }
 
                         override fun onCancel() {}

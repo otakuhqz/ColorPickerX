@@ -16,14 +16,20 @@
   ~  along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:id="@+id/tab_presets">
+<resources>
+    <declare-styleable name="PanelView">
+        <attr format="boolean" name="cpx_showCurrentColor" />
+        <attr format="enum" name="cpx_colorShape">
+            <enum name="square" value="0" />
+            <enum name="circle" value="1" />
+        </attr>
+        <attr format="color|reference" name="cpx_borderColor" />
+    </declare-styleable>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/color_palette"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+    <declare-styleable name="CustomPickerSelector" parent="PanelView">
+        <attr format="boolean|reference" name="cpx_alphaChannelVisible" />
+        <attr format="string|reference" name="cpx_alphaChannelText" />
+        <attr format="color|reference" name="cpx_sliderColor" />
+        <attr name="cpx_borderColor" />
+    </declare-styleable>
+</resources>
