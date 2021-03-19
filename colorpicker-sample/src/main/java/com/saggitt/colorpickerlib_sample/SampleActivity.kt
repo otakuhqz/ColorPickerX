@@ -24,6 +24,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.saggitt.colorpickerx.ColorPicker
+import com.saggitt.colorpickerx.ColorPickerTab
 import com.saggitt.colorpickerx.OnChooseColorListener
 import java.util.*
 
@@ -86,8 +87,6 @@ class SampleActivity : AppCompatActivity() {
                     .addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
         }
 
-        /*DISABLED*/
-        /*
         val tabbedButton = findViewById<MaterialButton>(R.id.tab_dialog_button)
         tabbedButton.setOnClickListener{
             val colorPicker = ColorPickerTab(this@SampleActivity)
@@ -103,8 +102,7 @@ class SampleActivity : AppCompatActivity() {
             colorPicker
                     .setDefaultColorButton(Color.parseColor("#f84c44"))
                     .setColors(colors)
-                    .setColumns(4)
-                    .setRoundColorButton(true)
+                    .setColumns(5)
                     .setOnChooseColorListener(object : OnChooseColorListener {
                         override fun onChooseColor(position: Int, color: Int) {
                             Log.d("position", "" + position)
@@ -112,7 +110,7 @@ class SampleActivity : AppCompatActivity() {
 
                         override fun onCancel() {}
                     })
-                    .addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
-        }*/
+                    .show()
+        }
     }
 }
