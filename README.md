@@ -143,6 +143,9 @@ setRoundColorButton(boolean roundButton);
 The original project was developed by Petrov Kristiyan
 [https://github.com/kristiyanP/colorpicker](https://github.com/kristiyanP/colorpicker)
 
+The custom picker selector was developed by Jared Rummler 
+[https://github.com/jaredrummler](https://github.com/jaredrummler)
+
 ## Additional Credits ##
 for the Material Dialog library for button design specs and implementation
   [https://github.com/drakeet/MaterialDialog](https://github.com/drakeet/MaterialDialog)
