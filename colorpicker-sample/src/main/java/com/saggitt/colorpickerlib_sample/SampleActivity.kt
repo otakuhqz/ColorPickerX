@@ -90,6 +90,7 @@ class SampleActivity : AppCompatActivity() {
         val tabbedButton = findViewById<MaterialButton>(R.id.tab_dialog_button)
         tabbedButton.setOnClickListener{
             val colorPicker = ColorPickerTab(this@SampleActivity)
+            colorPicker.showAlpha(true)
             val colors = ArrayList<String>()
             colors.add("#82B926")
             colors.add("#a276eb")
