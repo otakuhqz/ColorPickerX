@@ -43,12 +43,12 @@
             android:layout_alignRight="@id/cpx_color_picker_selector"
             android:layout_below="@id/cpx_color_picker_selector"
             android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <com.saggitt.colorpickerx.PanelView
-                android:layout_width="0px"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_width="48dp"
+                android:layout_height="36dp"
                 android:id="@+id/cpx_color_panel_current"
                 app:cpx_borderColor="#646464"
                 app:cpx_colorShape="square" />
@@ -59,14 +59,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:gravity="center"
+                android:gravity="center|center_vertical"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/arrow_forward" />
 
             <com.saggitt.colorpickerx.PanelView
-                android:layout_width="0px"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_width="48dp"
+                android:layout_height="36dp"
                 android:id="@+id/cpx_color_panel_new"
                 app:cpx_borderColor="#646464"
                 app:cpx_colorShape="square" />
@@ -95,7 +94,7 @@
 
                 <EditText
                     android:id="@+id/cpx_hex"
-                    android:layout_width="110dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:digits="0123456789ABCDEFabcdef"
                     android:focusable="true"

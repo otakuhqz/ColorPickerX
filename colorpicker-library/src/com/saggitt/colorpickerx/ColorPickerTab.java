@@ -35,12 +35,12 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.lang.ref.WeakReference;
@@ -80,8 +80,8 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
     private int default_color;
     private final View dialogViewLayout;
     private boolean disableDefaultButtons;
-    private final AppCompatButton positiveButton;
-    private final AppCompatButton negativeButton;
+    private final MaterialButton positiveButton;
+    private final MaterialButton negativeButton;
     private final View tabPresets;
     private final View tabCustom;
 
@@ -109,7 +109,6 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
 
         tabLayout = dialogViewLayout.findViewById(R.id.color_tabs);
         tabLayout.setupWithViewPager(viewPager);
-
 
         recyclerView = dialogViewLayout.findViewById(R.id.color_palette);
         buttons_layout = dialogViewLayout.findViewById(R.id.buttons_layout);
@@ -262,6 +261,13 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
             a = -1;
         }
         return Color.argb(a, r, g, b);
+    }
+
+    public ColorPickerTab showAlpha(boolean showAlpha) {
+        showAlphaSlider = showAlpha;
+        colorPicker.setAlphaSliderVisible(showAlphaSlider);
+
+        return this;
     }
 
     /**
