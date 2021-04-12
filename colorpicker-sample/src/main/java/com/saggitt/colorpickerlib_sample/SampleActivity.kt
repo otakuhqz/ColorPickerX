@@ -38,16 +38,27 @@ class SampleActivity : AppCompatActivity() {
         dialogButton.setOnClickListener {
             val colorPicker = ColorPicker(this@SampleActivity)
             val colors = ArrayList<String>()
-            colors.add("#82B926")
-            colors.add("#a276eb")
-            colors.add("#6a3ab2")
-            colors.add("#666666")
-            colors.add("#FFFF00")
-            colors.add("#3C8D2F")
-            colors.add("#FA9F00")
-            colors.add("#FF0000")
+            colors.add("#FFF44336")
+            colors.add("#FFE91E63")
+            colors.add("#FFFF2C93")
+            colors.add("#FF9C27B0")
+            colors.add("#FF673AB7")
+            colors.add("#FF3F51B5")
+            colors.add("#FF2196F3")
+            colors.add("#FF03A9F4")
+            colors.add("#FF00BCD4")
+            colors.add("#FF009688")
+            colors.add("#FF4CAF50") // GREEN 500
+            colors.add("#FF8BC34A") // LIGHT GREEN 500
+            colors.add("#FFCDDC39") // LIME 500
+            colors.add("#FFFFEB3B") // YELLOW 500
+            colors.add("#FFFFC107") // AMBER 500
+            colors.add("#FFFF9800") // ORANGE 500
+            colors.add("#FF795548") // BROWN 500
+            colors.add("#FF607D8B") // BLUE GREY 500
+            colors.add("#FF9E9E9E") // GREY 500
             colorPicker
-                    .setDefaultColorButton(Color.parseColor("#f84c44"))
+                    .setDefaultColorButton(Color.parseColor("#FFF44336"))
                     .setColors(colors)
                     .setColumns(5)
                     .setRoundColorButton(true)
@@ -58,23 +69,35 @@ class SampleActivity : AppCompatActivity() {
 
                         override fun onCancel() {}
                     })
-                    .addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
+                    //.addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
+                    .show()
         }
 
         val dialogButton2 = findViewById<MaterialButton>(R.id.dialog_button_square)
         dialogButton2.setOnClickListener {
             val colorPicker = ColorPicker(this@SampleActivity)
             val colors = ArrayList<String>()
-            colors.add("#82B926")
-            colors.add("#a276eb")
-            colors.add("#6a3ab2")
-            colors.add("#666666")
-            colors.add("#FFFF00")
-            colors.add("#3C8D2F")
-            colors.add("#FA9F00")
-            colors.add("#FF0000")
+            colors.add("#FFF44336")
+            colors.add("#FFE91E63")
+            colors.add("#FFFF2C93")
+            colors.add("#FF9C27B0")
+            colors.add("#FF673AB7")
+            colors.add("#FF3F51B5")
+            colors.add("#FF2196F3")
+            colors.add("#FF03A9F4")
+            colors.add("#FF00BCD4")
+            colors.add("#FF009688")
+            colors.add("#FF4CAF50") // GREEN 500
+            colors.add("#FF8BC34A") // LIGHT GREEN 500
+            colors.add("#FFCDDC39") // LIME 500
+            colors.add("#FFFFEB3B") // YELLOW 500
+            colors.add("#FFFFC107") // AMBER 500
+            colors.add("#FFFF9800") // ORANGE 500
+            colors.add("#FF795548") // BROWN 500
+            colors.add("#FF607D8B") // BLUE GREY 500
+            colors.add("#FF9E9E9E") // GREY 500
             colorPicker
-                    .setDefaultColorButton(Color.parseColor("#f84c44"))
+                    .setDefaultColorButton(Color.parseColor("#FFF44336"))
                     .setColors(colors)
                     .setColumns(5)
                     .setOnChooseColorListener(object : OnChooseColorListener {
@@ -84,7 +107,8 @@ class SampleActivity : AppCompatActivity() {
 
                         override fun onCancel() {}
                     })
-                    .addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
+                    //.addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
+                    .show()
         }
 
         val tabbedButton = findViewById<MaterialButton>(R.id.tab_dialog_button)
@@ -92,16 +116,27 @@ class SampleActivity : AppCompatActivity() {
             val colorPicker = ColorPickerTab(this@SampleActivity)
             colorPicker.showAlpha(true)
             val colors = ArrayList<String>()
-            colors.add("#82B926")
-            colors.add("#a276eb")
-            colors.add("#6a3ab2")
-            colors.add("#666666")
-            colors.add("#FFFF00")
-            colors.add("#3C8D2F")
-            colors.add("#FA9F00")
-            colors.add("#FF0000")
+            colors.add("#FFF44336")
+            colors.add("#FFE91E63")
+            colors.add("#FFFF2C93")
+            colors.add("#FF9C27B0")
+            colors.add("#FF673AB7")
+            colors.add("#FF3F51B5")
+            colors.add("#FF2196F3")
+            colors.add("#FF03A9F4")
+            colors.add("#FF00BCD4")
+            colors.add("#FF009688")
+            colors.add("#FF4CAF50") // GREEN 500
+            colors.add("#FF8BC34A") // LIGHT GREEN 500
+            colors.add("#FFCDDC39") // LIME 500
+            colors.add("#FFFFEB3B") // YELLOW 500
+            colors.add("#FFFFC107") // AMBER 500
+            colors.add("#FFFF9800") // ORANGE 500
+            colors.add("#FF795548") // BROWN 500
+            colors.add("#FF607D8B") // BLUE GREY 500
+            colors.add("#FF9E9E9E") // GREY 500
             colorPicker
-                    .setDefaultColorButton(Color.parseColor("#f84c44"))
+                    .setDefaultColorButton(Color.parseColor("#FFF44336"))
                     .setColors(colors)
                     .setColumns(5)
                     .setOnChooseColorListener(object : OnChooseColorListener {
