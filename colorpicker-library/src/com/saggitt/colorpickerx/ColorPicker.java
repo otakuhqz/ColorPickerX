@@ -32,11 +32,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.button.MaterialButton;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -77,8 +78,8 @@ public class ColorPicker {
     private int paddingTitleLeft, paddingTitleRight, paddingTitleBottom, paddingTitleTop;
     private final View dialogViewLayout;
     private boolean disableDefaultButtons;
-    private final AppCompatButton positiveButton;
-    private final AppCompatButton negativeButton;
+    private final MaterialButton positiveButton;
+    private final MaterialButton negativeButton;
 
     /**
      * Constructor
