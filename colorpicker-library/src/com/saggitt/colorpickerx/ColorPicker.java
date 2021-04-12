@@ -417,7 +417,7 @@ public class ColorPicker {
         );
 
         params.setMargins(dip2px(10, mContext), 0, 0, 0);
-        Button button = new Button(mContext);
+        MaterialButton button = new MaterialButton(mContext);
         button.setMinWidth(getDimensionDp(R.dimen.action_button_min_width, mContext));
         button.setMinimumWidth(getDimensionDp(R.dimen.action_button_min_width, mContext));
         button.setPadding(

@@ -38,14 +38,14 @@
             android:id="@+id/negative"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
+            android:layout_margin="10dp"
             android:textColor="@color/black_de" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/positive"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
     </LinearLayout>
 
 </RelativeLayout>
