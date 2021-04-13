@@ -37,6 +37,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.button.MaterialButton;
 import com.saggitt.colorpickerx.utils.ColorUtils;
 import com.saggitt.colorpickerx.utils.CustomDialog;
 import com.saggitt.colorpickerx.views.CustomPickerSelector;
@@ -60,8 +61,8 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
     private final int marginColorButtonTop;
     private final int marginColorButtonBottom;
     private int paddingTitleLeft, paddingTitleRight, paddingTitleBottom, paddingTitleTop;
-    private final Button positiveButton;
-    private final Button neutralButton;
+    private final MaterialButton positiveButton;
+    private final MaterialButton neutralButton;
     private final Context mContext;
     private boolean dismiss;
     private boolean fullHeight;
@@ -193,6 +194,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
 
     public ColorSelectorCustom setDefaultColorButton(int color) {
         oldColorPanel.setColor(color);
+        newColorPanel.setColor(color);
         colorPicker.setColor(color);
         this.defaultColor = color;
         return this;
@@ -318,8 +320,8 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
                     onChooseColorListener.onCancel();
                 ColorSelectorPresets colorPicker = new ColorSelectorPresets(v.getContext());
                 colorPicker.setTitle(title)
-                        .setColumns(5)
-                        .setColorButtonSize(56, 56)
+                        .setColumns(4)
+                        .setColorButtonSize(48, 48)
                         .setRoundColorButton(true)
                         .setTitle(title)
                         .setOnChooseColorListener(onChooseColorListener)
@@ -342,7 +344,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
             //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.90);
+            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.95);
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }

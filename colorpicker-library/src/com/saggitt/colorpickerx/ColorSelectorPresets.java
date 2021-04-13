@@ -35,6 +35,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.saggitt.colorpickerx.utils.ColorViewAdapter;
 import com.saggitt.colorpickerx.utils.CustomDialog;
 import com.saggitt.colorpickerx.views.ColorPal;
@@ -78,8 +79,8 @@ public class ColorSelectorPresets {
     private int paddingTitleLeft, paddingTitleRight, paddingTitleBottom, paddingTitleTop;
     private final View dialogViewLayout;
     private boolean disableDefaultButtons;
-    private final Button positiveButton;
-    private final Button neutralButton;
+    private final MaterialButton positiveButton;
+    private final MaterialButton neutralButton;
     private final int[] materialColors = {
             0XFFF44336,
             0XFFE91E63,
@@ -313,7 +314,7 @@ public class ColorSelectorPresets {
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
-            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.90);
+            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.95);
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }

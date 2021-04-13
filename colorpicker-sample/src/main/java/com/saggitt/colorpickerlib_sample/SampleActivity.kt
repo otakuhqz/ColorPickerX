@@ -153,8 +153,8 @@ class SampleActivity : AppCompatActivity() {
 
             colorPicker
                     .setDefaultColorButton(Color.RED)
-                    .setColumns(5)
-                    .setColorButtonSize(56, 56)
+                    .setColumns(4)
+                    .setColorButtonSize(48, 48)
                     .setRoundColorButton(true)
                     .setOnChooseColorListener(object : OnChooseColorListener {
                         override fun onChooseColor(position: Int, color: Int) {
