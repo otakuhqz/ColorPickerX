@@ -18,6 +18,7 @@
 <resources>
     <string name="app_name">ColorPickerX Sample</string>
     <string name="tab_button">Tabbed Dialog</string>
+    <string name="custom_buttom">Custom Dialog</string>
     <string name="dialog_button_rounded">Rounded Icons</string>
     <string name="dialog_button_square">Square Icons</string>
 </resources>

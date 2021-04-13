@@ -15,9 +15,15 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerx;
 
-public interface OnChooseColorListener {
-    void onChooseColor(int position, int color);
-    void onCancel();
+package com.saggitt.colorpickerx.utils;
+
+import androidx.annotation.IntDef;
+
+@IntDef({ColorShape.SQUARE, ColorShape.CIRCLE})
+public @interface ColorShape {
+
+    int SQUARE = 0;
+
+    int CIRCLE = 1;
 }

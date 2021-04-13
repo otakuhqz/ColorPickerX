@@ -23,9 +23,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
-import com.saggitt.colorpickerx.ColorPicker
-import com.saggitt.colorpickerx.ColorPickerTab
-import com.saggitt.colorpickerx.OnChooseColorListener
+import com.saggitt.colorpickerx.*
 import java.util.*
 
 class SampleActivity : AppCompatActivity() {
@@ -136,9 +134,28 @@ class SampleActivity : AppCompatActivity() {
             colors.add("#FF607D8B") // BLUE GREY 500
             colors.add("#FF9E9E9E") // GREY 500
             colorPicker
-                    .setDefaultColorButton(Color.parseColor("#FFF44336"))
+                    .setDefaultColorButton(Color.WHITE)
                     .setColors(colors)
                     .setColumns(5)
+                    .setOnChooseColorListener(object : OnChooseColorListener {
+                        override fun onChooseColor(position: Int, color: Int) {
+                            Log.d("position", "" + color)
+                        }
+
+                        override fun onCancel() {}
+                    })
+                    .show()
+        }
+
+        val buttonCustom = findViewById<MaterialButton>(R.id.custom_button)
+        buttonCustom.setOnClickListener {
+            val colorPicker = ColorSelectorPresets(this@SampleActivity)
+
+            colorPicker
+                    .setDefaultColorButton(Color.RED)
+                    .setColumns(5)
+                    .setColorButtonSize(56, 56)
+                    .setRoundColorButton(true)
                     .setOnChooseColorListener(object : OnChooseColorListener {
                         override fun onChooseColor(position: Int, color: Int) {
                             Log.d("position", "" + color)

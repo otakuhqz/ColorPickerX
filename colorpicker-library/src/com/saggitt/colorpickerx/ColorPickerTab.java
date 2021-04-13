@@ -42,12 +42,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
+import com.saggitt.colorpickerx.utils.ColorUtils;
+import com.saggitt.colorpickerx.utils.ColorViewAdapter;
+import com.saggitt.colorpickerx.utils.CustomDialog;
+import com.saggitt.colorpickerx.utils.CustomPagerAdapter;
+import com.saggitt.colorpickerx.views.ColorPal;
+import com.saggitt.colorpickerx.views.CustomPickerSelector;
+import com.saggitt.colorpickerx.views.PanelView;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import static com.saggitt.colorpickerx.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.ColorUtils.getDimensionDp;
+import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListener, TextWatcher {
 
@@ -172,7 +179,7 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
     @Override
     public void afterTextChanged(Editable s) {
         if (hexEditText.isFocused()) {
-            int color = parseColorString(s.toString());
+            int color = ColorUtils.parseColorString(s.toString());
             if (color != colorPicker.getColor()) {
                 fromEditText = true;
                 colorPicker.setColor(color, true);
@@ -207,60 +214,6 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
         } else {
             hexEditText.setText(String.format("%06X", (0xFFFFFF & color)));
         }
-    }
-
-    private int parseColorString(String colorString) throws NumberFormatException {
-        int a, r, g, b = 0;
-        if (colorString.startsWith("#")) {
-            colorString = colorString.substring(1);
-        }
-        if (colorString.length() == 0) {
-            r = 0;
-            a = 255;
-            g = 0;
-        } else if (colorString.length() <= 2) {
-            a = 255;
-            r = 0;
-            b = Integer.parseInt(colorString, 16);
-            g = 0;
-        } else if (colorString.length() == 3) {
-            a = 255;
-            r = Integer.parseInt(colorString.substring(0, 1), 16);
-            g = Integer.parseInt(colorString.substring(1, 2), 16);
-            b = Integer.parseInt(colorString.substring(2, 3), 16);
-        } else if (colorString.length() == 4) {
-            a = 255;
-            r = Integer.parseInt(colorString.substring(0, 2), 16);
-            g = r;
-            r = 0;
-            b = Integer.parseInt(colorString.substring(2, 4), 16);
-        } else if (colorString.length() == 5) {
-            a = 255;
-            r = Integer.parseInt(colorString.substring(0, 1), 16);
-            g = Integer.parseInt(colorString.substring(1, 3), 16);
-            b = Integer.parseInt(colorString.substring(3, 5), 16);
-        } else if (colorString.length() == 6) {
-            a = 255;
-            r = Integer.parseInt(colorString.substring(0, 2), 16);
-            g = Integer.parseInt(colorString.substring(2, 4), 16);
-            b = Integer.parseInt(colorString.substring(4, 6), 16);
-        } else if (colorString.length() == 7) {
-            a = Integer.parseInt(colorString.substring(0, 1), 16);
-            r = Integer.parseInt(colorString.substring(1, 3), 16);
-            g = Integer.parseInt(colorString.substring(3, 5), 16);
-            b = Integer.parseInt(colorString.substring(5, 7), 16);
-        } else if (colorString.length() == 8) {
-            a = Integer.parseInt(colorString.substring(0, 2), 16);
-            r = Integer.parseInt(colorString.substring(2, 4), 16);
-            g = Integer.parseInt(colorString.substring(4, 6), 16);
-            b = Integer.parseInt(colorString.substring(6, 8), 16);
-        } else {
-            b = -1;
-            g = -1;
-            r = -1;
-            a = -1;
-        }
-        return Color.argb(a, r, g, b);
     }
 
     public ColorPickerTab showAlpha(boolean showAlpha) {
@@ -430,7 +383,6 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }
-
     }
 
     /**
@@ -686,19 +638,6 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
      */
     public ColorPickerTab disableDefaultButtons(boolean disableDefaultButtons) {
         this.disableDefaultButtons = disableDefaultButtons;
-        return this;
-    }
-
-    /**
-     * set padding to the title in DP
-     *
-     * @param left   dp
-     * @param top    dp
-     * @param right  dp
-     * @param bottom dp
-     * @return this
-     */
-    public ColorPickerTab setTitlePadding(int left, int top, int right, int bottom) {
         return this;
     }
 

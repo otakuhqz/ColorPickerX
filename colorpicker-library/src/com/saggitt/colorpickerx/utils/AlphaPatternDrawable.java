@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx;
+package com.saggitt.colorpickerx.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -30,7 +30,7 @@ import android.graphics.drawable.Drawable;
  * This drawable will draw a simple white and gray chessboard pattern.
  * It's the pattern you will often see as a background behind a partly transparent image in many applications.
  */
-class AlphaPatternDrawable extends Drawable {
+public class AlphaPatternDrawable extends Drawable {
 
     private int rectangleSize = 10;
 
@@ -48,7 +48,7 @@ class AlphaPatternDrawable extends Drawable {
      */
     private Bitmap bitmap;
 
-    AlphaPatternDrawable(int rectangleSize) {
+    public AlphaPatternDrawable(int rectangleSize) {
         this.rectangleSize = rectangleSize;
         paintWhite.setColor(0xFFFFFFFF);
         paintGray.setColor(0xFFCBCBCB);

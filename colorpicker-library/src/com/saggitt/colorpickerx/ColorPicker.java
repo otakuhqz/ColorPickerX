@@ -38,12 +38,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.saggitt.colorpickerx.utils.ColorViewAdapter;
+import com.saggitt.colorpickerx.utils.CustomDialog;
+import com.saggitt.colorpickerx.views.ColorPal;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import static com.saggitt.colorpickerx.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.ColorUtils.getDimensionDp;
+import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 public class ColorPicker {
     private OnChooseColorListener onChooseColorListener;

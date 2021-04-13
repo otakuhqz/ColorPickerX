@@ -15,9 +15,27 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerx;
+package com.saggitt.colorpickerx.utils;
 
-public interface OnChooseColorListener {
-    void onChooseColor(int position, int color);
-    void onCancel();
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+
+import androidx.appcompat.app.AppCompatDialog;
+
+public class CustomDialog extends AppCompatDialog {
+    private final View view;
+
+    public CustomDialog(Context context, View layout) {
+        super(context);
+        view = layout;
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(view);
+    }
 }

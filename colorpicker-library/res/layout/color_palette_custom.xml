@@ -30,7 +30,7 @@
         android:orientation="vertical"
         android:padding="22dp">
 
-        <com.saggitt.colorpickerx.CustomPickerSelector
+        <com.saggitt.colorpickerx.views.CustomPickerSelector
             android:id="@+id/cpx_color_picker_selector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.saggitt.colorpickerx.PanelView
+            <com.saggitt.colorpickerx.views.PanelView
                 android:layout_width="48dp"
                 android:layout_height="36dp"
                 android:id="@+id/cpx_color_panel_current"
@@ -64,7 +64,7 @@
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/arrow_forward" />
 
-            <com.saggitt.colorpickerx.PanelView
+            <com.saggitt.colorpickerx.views.PanelView
                 android:layout_width="48dp"
                 android:layout_height="36dp"
                 android:id="@+id/cpx_color_panel_new"

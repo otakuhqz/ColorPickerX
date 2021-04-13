@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx;
+package com.saggitt.colorpickerx.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -42,6 +42,9 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+import com.saggitt.colorpickerx.R;
+import com.saggitt.colorpickerx.utils.AlphaPatternDrawable;
 
 public class CustomPickerSelector extends View {
 

@@ -16,14 +16,35 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx;
+package com.saggitt.colorpickerx.views;
 
-import androidx.annotation.IntDef;
+public class ColorPal {
+    private int color;
+    private boolean check;
 
-@IntDef({ColorShape.SQUARE, ColorShape.CIRCLE})
-public @interface ColorShape {
+    public ColorPal(int color, boolean check) {
+        this.color = color;
+        this.check = check;
+    }
 
-    int SQUARE = 0;
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof ColorPal && ((ColorPal) o).color == color;
+    }
 
-    int CIRCLE = 1;
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
 }

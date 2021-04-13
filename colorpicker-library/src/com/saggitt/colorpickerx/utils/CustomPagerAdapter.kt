@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx
+package com.saggitt.colorpickerx.utils
 
 import android.view.View
 import android.view.ViewGroup
