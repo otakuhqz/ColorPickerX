@@ -37,7 +37,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
-import com.google.android.material.button.MaterialButton;
 import com.saggitt.colorpickerx.utils.ColorUtils;
 import com.saggitt.colorpickerx.utils.CustomDialog;
 import com.saggitt.colorpickerx.views.CustomPickerSelector;
@@ -61,8 +60,8 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
     private final int marginColorButtonTop;
     private final int marginColorButtonBottom;
     private int paddingTitleLeft, paddingTitleRight, paddingTitleBottom, paddingTitleTop;
-    private final MaterialButton positiveButton;
-    private final MaterialButton neutralButton;
+    private final Button positiveButton;
+    private final Button neutralButton;
     private final Context mContext;
     private boolean dismiss;
     private boolean fullHeight;

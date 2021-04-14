@@ -35,7 +35,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.saggitt.colorpickerx.utils.ColorViewAdapter;
 import com.saggitt.colorpickerx.utils.CustomDialog;
 import com.saggitt.colorpickerx.views.ColorPal;
@@ -79,8 +78,8 @@ public class ColorSelectorPresets {
     private int paddingTitleLeft, paddingTitleRight, paddingTitleBottom, paddingTitleTop;
     private final View dialogViewLayout;
     private boolean disableDefaultButtons;
-    private final MaterialButton positiveButton;
-    private final MaterialButton neutralButton;
+    private final Button positiveButton;
+    private final Button neutralButton;
     private final int[] materialColors = {
             0XFFF44336,
             0XFFE91E63,
