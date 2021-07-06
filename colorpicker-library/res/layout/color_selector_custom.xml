@@ -107,7 +107,7 @@
 
                 <EditText
                     android:id="@+id/cpx_hex"
-                    android:layout_width="75dp"
+                    android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:digits="0123456789ABCDEFabcdef"
                     android:focusable="true"
