@@ -42,7 +42,7 @@ android {
                     // You can then customize attributes of the publication as shown below.
                     groupId = 'com.saggitt.colorpickerx'
                     artifactId = 'colorpickerx'
-                    version = '1.4.3'
+                    version = '1.4.4'
                 }
                 // Creates a Maven publication called “debug”.
                 debug(MavenPublication) {
