@@ -16,35 +16,35 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx.views;
+package com.saggitt.colorpickerx.views
 
-public class ColorPal {
-    private int color;
-    private boolean check;
+class ColorPal(parseColor: Int, mCheck: Boolean) {
+    private var color = parseColor
+    private var check = mCheck
 
-    public ColorPal(int color, boolean check) {
-        this.color = color;
-        this.check = check;
+    override fun equals(other: Any?): Boolean {
+        return other is ColorPal && other.color == color
     }
 
-    @Override
-    public boolean equals(Object o) {
-        return o instanceof ColorPal && ((ColorPal) o).color == color;
+    fun getColor(): Int {
+        return color
     }
 
-    public int getColor() {
-        return color;
+    fun setColor(color: Int) {
+        this.color = color
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    fun isCheck(): Boolean {
+        return check
     }
 
-    public boolean isCheck() {
-        return check;
+    fun setCheck(check: Boolean) {
+        this.check = check
     }
 
-    public void setCheck(boolean check) {
-        this.check = check;
+    override fun hashCode(): Int {
+        var result = color
+        result = 31 * result + check.hashCode()
+        return result
     }
 }
