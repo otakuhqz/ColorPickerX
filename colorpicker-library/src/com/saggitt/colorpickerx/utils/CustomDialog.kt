@@ -15,27 +15,24 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerx.utils;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
+package com.saggitt.colorpickerx.utils
 
-import androidx.appcompat.app.AppCompatDialog;
+import android.content.Context
+import android.os.Bundle
+import android.view.View
+import android.view.Window
+import androidx.appcompat.app.AppCompatDialog
 
-public class CustomDialog extends AppCompatDialog {
-    private final View view;
+class CustomDialog(context: Context, layout: View) : AppCompatDialog(context) {
+    private var view: View = layout
 
-    public CustomDialog(Context context, View layout) {
-        super(context);
-        view = layout;
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+    init {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(view);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(view)
     }
 }
