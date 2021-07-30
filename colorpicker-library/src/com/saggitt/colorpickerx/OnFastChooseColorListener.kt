@@ -16,10 +16,10 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx;
+package com.saggitt.colorpickerx
 
-public interface OnFastChooseColorListener {
-    void setOnFastChooseColorListener(int position, int color);
+interface OnFastChooseColorListener {
+    fun setOnFastChooseColorListener(position: Int, color: Int)
 
-    void onCancel();
+    fun onCancel()
 }

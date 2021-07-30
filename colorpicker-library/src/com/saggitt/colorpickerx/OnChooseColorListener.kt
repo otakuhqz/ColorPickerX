@@ -15,9 +15,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerx;
 
-public interface OnChooseColorListener {
-    void onChooseColor(int position, int color);
-    void onCancel();
+package com.saggitt.colorpickerx
+
+interface OnChooseColorListener {
+    fun onChooseColor(position: Int, color: Int)
+    fun onCancel()
 }
