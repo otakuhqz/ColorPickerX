@@ -34,7 +34,7 @@
         android:id="@+id/color_pager"
         android:layout_below="@id/color_tabs"
         android:layout_width="match_parent"
-        android:layout_height="375dp">
+        android:layout_height="400dp">
 
         <include layout="@layout/color_palette_custom" />
 

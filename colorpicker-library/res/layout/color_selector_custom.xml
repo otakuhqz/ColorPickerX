@@ -32,7 +32,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:text="Ejemplo de Titulo"
+        android:text="Example Title"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -52,9 +52,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_alignLeft="@id/cpx_color_picker_selector"
-            android:layout_alignRight="@id/cpx_color_picker_selector"
-            android:layout_below="@id/cpx_color_picker_selector"
             android:layout_marginTop="16dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
