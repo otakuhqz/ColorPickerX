@@ -20,6 +20,9 @@ DEALINGS IN THE SOFTWARE.
 */
 package com.saggitt.colorpickerx;
 
+import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -44,9 +47,6 @@ import com.saggitt.colorpickerx.views.ColorPal;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-
-import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 public class ColorPicker {
     private OnChooseColorListener onChooseColorListener;
@@ -99,8 +99,8 @@ public class ColorPicker {
         this.dismiss = true;
         this.marginColorButtonLeft = this.marginColorButtonTop = this.marginColorButtonRight = this.marginColorButtonBottom = 5;
         this.title = context.getString(R.string.colorpicker_dialog_title);
-        this.negativeText = context.getString(R.string.colorpicker_dialog_cancel);
-        this.positiveText = context.getString(R.string.colorpicker_dialog_ok);
+        this.negativeText = context.getString(android.R.string.cancel);
+        this.positiveText = context.getString(android.R.string.ok);
         this.default_color = 0;
         this.columns = 4;
     }

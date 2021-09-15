@@ -52,7 +52,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/negative"
-            android:text="@string/colorpicker_dialog_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp" />
@@ -60,7 +59,6 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/colorpicker_dialog_ok"
             android:layout_margin="10dp"
             android:gravity="center"
             android:id="@+id/positive" />

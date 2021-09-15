@@ -17,6 +17,9 @@
  */
 package com.saggitt.colorpickerx;
 
+import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -52,9 +55,6 @@ import com.saggitt.colorpickerx.views.PanelView;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-
-import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListener, TextWatcher {
 
@@ -125,8 +125,8 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
         mContext = context;
         this.dismiss = true;
         this.marginColorButtonLeft = this.marginColorButtonTop = this.marginColorButtonRight = this.marginColorButtonBottom = 5;
-        this.negativeText = context.getString(R.string.colorpicker_dialog_cancel);
-        this.positiveText = context.getString(R.string.colorpicker_dialog_ok);
+        this.negativeText = context.getString(android.R.string.cancel);
+        this.positiveText = context.getString(android.R.string.ok);
         this.default_color = 0;
         this.columns = 5;
 

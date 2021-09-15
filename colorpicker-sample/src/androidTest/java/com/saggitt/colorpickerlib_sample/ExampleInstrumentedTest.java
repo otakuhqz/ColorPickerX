@@ -1,13 +1,14 @@
 package com.saggitt.colorpickerlib_sample;
 
+import static org.junit.Assert.assertEquals;
+
 import android.content.Context;
+
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
 
 /**
  * Instrumentation test, which will execute on an Android device.
@@ -21,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("petrov.kristiyan.colorpicker_sample", appContext.getPackageName());
+        assertEquals("com.saggitt.colorpickerlib_sample", appContext.getPackageName());
     }
 }

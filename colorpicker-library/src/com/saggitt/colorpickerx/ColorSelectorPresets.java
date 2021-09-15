@@ -18,6 +18,9 @@
 
 package com.saggitt.colorpickerx;
 
+import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -41,9 +44,6 @@ import com.saggitt.colorpickerx.views.ColorPal;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-
-import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 public class ColorSelectorPresets {
     private OnChooseColorListener onChooseColorListener;
@@ -115,7 +115,7 @@ public class ColorSelectorPresets {
         this.marginColorButtonLeft = this.marginColorButtonTop = this.marginColorButtonRight = this.marginColorButtonBottom = 5;
         this.title = context.getString(R.string.colorpicker_dialog_title);
         this.neutralText = context.getString(R.string.color_custom);
-        this.positiveText = context.getString(R.string.colorpicker_dialog_ok);
+        this.positiveText = context.getString(android.R.string.ok);
         this.defaultColor = 0;
         this.columns = 4;
         loadColors();

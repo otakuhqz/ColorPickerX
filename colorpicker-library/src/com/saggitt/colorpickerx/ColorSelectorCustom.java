@@ -18,6 +18,9 @@
 
 package com.saggitt.colorpickerx;
 
+import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
+import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -43,9 +46,6 @@ import com.saggitt.colorpickerx.views.CustomPickerSelector;
 import com.saggitt.colorpickerx.views.PanelView;
 
 import java.lang.ref.WeakReference;
-
-import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedListener, TextWatcher {
     private OnChooseColorListener onChooseColorListener;
@@ -90,7 +90,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         this.marginColorButtonLeft = this.marginColorButtonTop = this.marginColorButtonRight = this.marginColorButtonBottom = 5;
         this.title = context.getString(R.string.colorpicker_dialog_title);
         this.neutralText = context.getString(R.string.color_presets);
-        this.positiveText = context.getString(R.string.colorpicker_dialog_ok);
+        this.positiveText = context.getString(android.R.string.ok);
         this.defaultColor = 0;
 
         hexEditText = dialogViewLayout.findViewById(R.id.cpx_hex);
