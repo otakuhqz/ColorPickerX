@@ -35,5 +35,5 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:elevation="2dp"
-        android:src="@drawable/ic_check" />
+        android:src="@drawable/ic_check_mark" />
 </RelativeLayout>
