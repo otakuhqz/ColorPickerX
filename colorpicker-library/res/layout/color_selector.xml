@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp"
-    android:id="@+id/colorpicker_base">
+    android:id="@+id/colorpicker_base"
+    android:theme="@style/DialogTheme">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
@@ -14,7 +15,9 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="Dialog Example"
+        android:textSize="16sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/color_palette"
@@ -38,8 +41,13 @@
             android:id="@+id/neutral_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp" />
 
         <Button
             android:id="@+id/positive"

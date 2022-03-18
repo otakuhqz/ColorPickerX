@@ -11,6 +11,10 @@
         <item name="android:textSize">@dimen/action_button_text_size</item>
     </style>
 
+    <style name="DialogTheme">
+        <item name="android:radius">24dp</item>
+    </style>
+
     <style name="MaterialDialog.Light" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabIndicatorColor">@color/color4</item>
     </style>
