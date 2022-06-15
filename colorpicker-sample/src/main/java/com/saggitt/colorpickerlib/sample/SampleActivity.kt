@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerlib_sample
+package com.saggitt.colorpickerlib.sample
 
 import android.graphics.Color
 import android.os.Bundle

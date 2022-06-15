@@ -1,4 +1,4 @@
-package com.saggitt.colorpickerlib_sample
+package com.saggitt.colorpickerlib.sample
 
 import android.app.Application
 
