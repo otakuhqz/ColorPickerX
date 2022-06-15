@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
-def sdkVersion = 28
+def sdkVersion = 31
 def toolsVersion = '30.0.1'
 
 android {
