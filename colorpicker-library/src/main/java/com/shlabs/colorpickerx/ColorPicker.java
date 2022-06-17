@@ -230,28 +230,22 @@ public class ColorPicker {
         positiveButton.setText(positiveText);
         negativeButton.setText(negativeText);
 
-        positiveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onChooseColorListener != null && !fastChooser)
-                    onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
-                if (dismiss) {
-                    dismissDialog();
-                    if (onFastChooseColorListener != null) {
-                        onFastChooseColorListener.onCancel();
-                    }
+        positiveButton.setOnClickListener(v -> {
+            if (onChooseColorListener != null && !fastChooser)
+                onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
+            if (dismiss) {
+                dismissDialog();
+                if (onFastChooseColorListener != null) {
+                    onFastChooseColorListener.onCancel();
                 }
             }
         });
 
-        negativeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (dismiss)
-                    dismissDialog();
-                if (onChooseColorListener != null)
-                    onChooseColorListener.onCancel();
-            }
+        negativeButton.setOnClickListener(v -> {
+            if (dismiss)
+                dismissDialog();
+            if (onChooseColorListener != null)
+                onChooseColorListener.onCancel();
         });
 
         if (mDialog == null) {
@@ -265,7 +259,7 @@ public class ColorPicker {
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
-            lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }
