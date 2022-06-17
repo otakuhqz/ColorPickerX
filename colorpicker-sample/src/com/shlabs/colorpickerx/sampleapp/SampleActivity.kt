@@ -16,15 +16,17 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerlib.sample
+package com.shlabs.colorpickerx.sampleapp
 
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
-import com.saggitt.colorpickerx.*
-import java.util.*
+import com.shlabs.colorpickerx.ColorPicker
+import com.shlabs.colorpickerx.ColorPickerTab
+import com.shlabs.colorpickerx.ColorSelectorPresets
+import com.shlabs.colorpickerx.OnChooseColorListener
 
 class SampleActivity : AppCompatActivity() {
 
@@ -56,19 +58,19 @@ class SampleActivity : AppCompatActivity() {
             colors.add("#FF607D8B") // BLUE GREY 500
             colors.add("#FF9E9E9E") // GREY 500
             colorPicker
-                    .setDefaultColorButton(Color.parseColor("#FFF44336"))
-                    .setColors(colors)
-                    .setColumns(5)
-                    .setRoundColorButton(true)
-                    .setOnChooseColorListener(object : OnChooseColorListener {
-                        override fun onChooseColor(position: Int, color: Int) {
-                            Log.d("position", "" + position)
-                        }
+                .setDefaultColorButton(Color.parseColor("#FFF44336"))
+                .setColors(colors)
+                .setColumns(5)
+                .setRoundColorButton(true)
+                .setOnChooseColorListener(object : OnChooseColorListener {
+                    override fun onChooseColor(position: Int, color: Int) {
+                        Log.d("position", "" + position)
+                    }
 
-                        override fun onCancel() {}
-                    })
-                    //.addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
-                    .show()
+                    override fun onCancel() {}
+                })
+                //.addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
+                .show()
         }
 
         val dialogButton2 = findViewById<MaterialButton>(R.id.dialog_button_square)
@@ -95,22 +97,22 @@ class SampleActivity : AppCompatActivity() {
             colors.add("#FF607D8B") // BLUE GREY 500
             colors.add("#FF9E9E9E") // GREY 500
             colorPicker
-                    .setDefaultColorButton(Color.parseColor("#FFF44336"))
-                    .setColors(colors)
-                    .setColumns(5)
-                    .setOnChooseColorListener(object : OnChooseColorListener {
-                        override fun onChooseColor(position: Int, color: Int) {
-                            Log.d("position", "" + position)
-                        }
+                .setDefaultColorButton(Color.parseColor("#FFF44336"))
+                .setColors(colors)
+                .setColumns(5)
+                .setOnChooseColorListener(object : OnChooseColorListener {
+                    override fun onChooseColor(position: Int, color: Int) {
+                        Log.d("position", "" + position)
+                    }
 
-                        override fun onCancel() {}
-                    })
-                    //.addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
-                    .show()
+                    override fun onCancel() {}
+                })
+                //.addListenerButton("newButton") { v, position, color -> Log.d("position", "" + position) }.show()
+                .show()
         }
 
         val tabbedButton = findViewById<MaterialButton>(R.id.tab_dialog_button)
-        tabbedButton.setOnClickListener{
+        tabbedButton.setOnClickListener {
             val colorPicker = ColorPickerTab(this@SampleActivity)
             colorPicker.showAlpha(true)
             val colors = ArrayList<String>()
@@ -134,17 +136,17 @@ class SampleActivity : AppCompatActivity() {
             colors.add("#FF607D8B") // BLUE GREY 500
             colors.add("#FF9E9E9E") // GREY 500
             colorPicker
-                    .setDefaultColorButton(Color.WHITE)
-                    .setColors(colors)
-                    .setColumns(5)
-                    .setOnChooseColorListener(object : OnChooseColorListener {
-                        override fun onChooseColor(position: Int, color: Int) {
-                            Log.d("position", "" + color)
-                        }
+                .setDefaultColorButton(Color.WHITE)
+                .setColors(colors)
+                .setColumns(5)
+                .setOnChooseColorListener(object : OnChooseColorListener {
+                    override fun onChooseColor(position: Int, color: Int) {
+                        Log.d("position", "" + color)
+                    }
 
-                        override fun onCancel() {}
-                    })
-                    .show()
+                    override fun onCancel() {}
+                })
+                .show()
         }
 
         val buttonCustom = findViewById<MaterialButton>(R.id.custom_button)
@@ -152,18 +154,18 @@ class SampleActivity : AppCompatActivity() {
             val colorPicker = ColorSelectorPresets(this@SampleActivity)
 
             colorPicker
-                    .setDefaultColorButton(Color.RED)
-                    .setColumns(4)
-                    .setColorButtonSize(48, 48)
-                    .setRoundColorButton(true)
-                    .setOnChooseColorListener(object : OnChooseColorListener {
-                        override fun onChooseColor(position: Int, color: Int) {
-                            Log.d("position", "" + color)
-                        }
+                .setDefaultColorButton(Color.RED)
+                .setColumns(4)
+                .setColorButtonSize(48, 48)
+                .setRoundColorButton(true)
+                .setOnChooseColorListener(object : OnChooseColorListener {
+                    override fun onChooseColor(position: Int, color: Int) {
+                        Log.d("position", "" + color)
+                    }
 
-                        override fun onCancel() {}
-                    })
-                    .show()
+                    override fun onCancel() {}
+                })
+                .show()
         }
     }
 }
