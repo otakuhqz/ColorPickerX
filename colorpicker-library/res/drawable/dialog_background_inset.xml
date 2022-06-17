@@ -2,4 +2,4 @@
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
     android:drawable="@drawable/dialog_background"
     android:insetRight="16dp"
-    android:insetLeft="16dp"></inset>
+    android:insetLeft="16dp" />
