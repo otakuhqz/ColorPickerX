@@ -16,10 +16,10 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx;
+package com.shlabs.colorpickerx;
 
-import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
+import static com.shlabs.colorpickerx.utils.ColorUtils.dip2px;
+import static com.shlabs.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -40,10 +40,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
-import com.saggitt.colorpickerx.utils.ColorUtils;
-import com.saggitt.colorpickerx.utils.CustomDialog;
-import com.saggitt.colorpickerx.views.CustomPickerSelector;
-import com.saggitt.colorpickerx.views.PanelView;
+import com.shlabs.colorpickerx.utils.ColorUtils;
+import com.shlabs.colorpickerx.utils.CustomDialog;
+import com.shlabs.colorpickerx.views.CustomPickerSelector;
+import com.shlabs.colorpickerx.views.PanelView;
 
 import java.lang.ref.WeakReference;
 
@@ -360,9 +360,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         return this;
     }
 
-    public
-    @Nullable
-    CustomDialog getDialog() {
+    public @Nullable CustomDialog getDialog() {
         if (mDialog == null)
             return null;
         return mDialog.get();

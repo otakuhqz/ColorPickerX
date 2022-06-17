@@ -16,35 +16,30 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx.views
+package com.shlabs.colorpickerx.utils
 
-class ColorPal(parseColor: Int, mCheck: Boolean) {
-    private var color = parseColor
-    private var check = mCheck
+import android.view.View
+import android.view.ViewGroup
+import androidx.viewpager.widget.PagerAdapter
 
-    override fun equals(other: Any?): Boolean {
-        return other is ColorPal && other.color == color
+class CustomPagerAdapter(private val mLists: Array<View>?, private val mTitles: Array<String>) :
+    PagerAdapter() {
+    override fun getCount(): Int {
+        return mLists?.size ?: 0
     }
 
-    fun getColor(): Int {
-        return color
+    override fun isViewFromObject(view: View, `object`: Any): Boolean {
+        return view === `object`
     }
 
-    fun setColor(color: Int) {
-        this.color = color
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        return mLists!![position]
     }
 
-    fun isCheck(): Boolean {
-        return check
-    }
-
-    fun setCheck(check: Boolean) {
-        this.check = check
-    }
-
-    override fun hashCode(): Int {
-        var result = color
-        result = 31 * result + check.hashCode()
-        return result
+    override fun getPageTitle(position: Int): CharSequence {
+        return if (position < 0 || position >= mTitles.size)
+            ""
+        else
+            mTitles[position]
     }
 }

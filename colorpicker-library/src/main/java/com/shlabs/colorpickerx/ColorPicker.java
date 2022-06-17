@@ -18,10 +18,10 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
-package com.saggitt.colorpickerx;
+package com.shlabs.colorpickerx;
 
-import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
+import static com.shlabs.colorpickerx.utils.ColorUtils.dip2px;
+import static com.shlabs.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -41,9 +41,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
-import com.saggitt.colorpickerx.utils.ColorViewAdapter;
-import com.saggitt.colorpickerx.utils.CustomDialog;
-import com.saggitt.colorpickerx.views.ColorPal;
+import com.shlabs.colorpickerx.utils.ColorViewAdapter;
+import com.shlabs.colorpickerx.utils.CustomDialog;
+import com.shlabs.colorpickerx.views.ColorPal;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -430,12 +430,7 @@ public class ColorPicker {
         button.setTextSize(getDimensionDp(R.dimen.action_button_text_size, mContext));
         button.setTextColor(ContextCompat.getColor(mContext, R.color.black_de));
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onClick(v, colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
-            }
-        });
+        button.setOnClickListener((View.OnClickListener) v -> listener.onClick(v, colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected()));
         button.setText(text);
         if (button.getParent() != null)
             buttons_layout.removeView(button);
@@ -471,9 +466,7 @@ public class ColorPicker {
      *
      * @return CustomDialog
      */
-    public
-    @Nullable
-    CustomDialog getDialog() {
+    public @Nullable CustomDialog getDialog() {
         if (mDialog == null)
             return null;
         return mDialog.get();

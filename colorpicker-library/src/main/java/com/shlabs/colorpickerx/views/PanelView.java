@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx.views;
+package com.shlabs.colorpickerx.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -37,9 +37,9 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.saggitt.colorpickerx.R;
-import com.saggitt.colorpickerx.utils.AlphaPatternDrawable;
-import com.saggitt.colorpickerx.utils.ColorShape;
+import com.shlabs.colorpickerx.R;
+import com.shlabs.colorpickerx.utils.AlphaPatternDrawable;
+import com.shlabs.colorpickerx.utils.ColorShape;
 
 public class PanelView extends View {
 

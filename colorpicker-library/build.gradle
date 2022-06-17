@@ -3,15 +3,17 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 32
-    buildToolsVersion '30.0.3'
+    buildToolsVersion '32.0.0'
     def name = "1.5.0"
     def code = 60
 
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 32
+
         versionName name
         versionCode code
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,62 +22,43 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     lintOptions {
         warning 'InvalidPackage'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     sourceSets {
         main {
             res.srcDirs = ['res']
             java.srcDirs = ['src']
-            manifest.srcFile 'AndroidManifest.xml'
+            manifest.srcFile 'src/AndroidManifest.xml'
         }
     }
-    afterEvaluate {
-        publishing {
-            publications {
-                // Creates a Maven publication called "release".
-                release(MavenPublication) {
-                    // Applies the component for the release build variant.
-                    from components.release
-
-                    // You can then customize attributes of the publication as shown below.
-                    groupId = 'com.saggitt.colorpickerx'
-                    artifactId = 'colorpickerx'
-                    version = '1.4.4'
-                }
-                // Creates a Maven publication called “debug”.
-                debug(MavenPublication) {
-                    // Applies the component for the debug build variant.
-                    from components.debug
-
-                    groupId = 'com.saggitt.colorpickerx'
-                    artifactId = 'colorpickerx-debug'
-                    version = '1.4.3'
-                }
-            }
-
-        }
-    }
-
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.core:core-ktx:1.8.0"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "com.google.android.material:material:1.6.1"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21"
+
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    implementation "androidx.recyclerview:recyclerview:1.2.1"
-    implementation "com.google.android.material:material:1.6.1"
-    testImplementation 'junit:junit:4.13.2'
-    implementation "androidx.core:core-ktx:1.8.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21"
 }
+
 repositories {
     google()
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
-

@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerx.utils;
+package com.shlabs.colorpickerx.utils;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -32,9 +32,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.saggitt.colorpickerx.OnFastChooseColorListener;
-import com.saggitt.colorpickerx.R;
-import com.saggitt.colorpickerx.views.ColorPal;
+import com.shlabs.colorpickerx.OnFastChooseColorListener;
+import com.shlabs.colorpickerx.R;
+import com.shlabs.colorpickerx.views.ColorPal;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

@@ -16,29 +16,9 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx.utils
+package com.shlabs.colorpickerx
 
-import android.view.View
-import android.view.ViewGroup
-import androidx.viewpager.widget.PagerAdapter
-
-class CustomPagerAdapter(private val mLists: Array<View>?, private val mTitles: Array<String>) : PagerAdapter() {
-    override fun getCount(): Int {
-        return mLists?.size ?: 0
-    }
-
-    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object`
-    }
-
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        return mLists!![position]
-    }
-
-    override fun getPageTitle(position: Int): CharSequence {
-        return if (position < 0 || position >= mTitles.size)
-            ""
-        else
-            mTitles[position]
-    }
+interface OnChooseColorListener {
+    fun onChooseColor(position: Int, color: Int)
+    fun onCancel()
 }

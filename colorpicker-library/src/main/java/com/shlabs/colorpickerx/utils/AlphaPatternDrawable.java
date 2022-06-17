@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx.utils;
+package com.shlabs.colorpickerx.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -32,7 +32,7 @@ import android.graphics.drawable.Drawable;
  */
 public class AlphaPatternDrawable extends Drawable {
 
-    private int rectangleSize = 10;
+    private int rectangleSize;
 
     private final Paint paint = new Paint();
     private final Paint paintWhite = new Paint();

@@ -16,9 +16,35 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx
+package com.shlabs.colorpickerx.views
 
-interface OnChooseColorListener {
-    fun onChooseColor(position: Int, color: Int)
-    fun onCancel()
+class ColorPal(parseColor: Int, mCheck: Boolean) {
+    private var color = parseColor
+    private var check = mCheck
+
+    override fun equals(other: Any?): Boolean {
+        return other is ColorPal && other.color == color
+    }
+
+    fun getColor(): Int {
+        return color
+    }
+
+    fun setColor(color: Int) {
+        this.color = color
+    }
+
+    fun isCheck(): Boolean {
+        return check
+    }
+
+    fun setCheck(check: Boolean) {
+        this.check = check
+    }
+
+    override fun hashCode(): Int {
+        var result = color
+        result = 31 * result + check.hashCode()
+        return result
+    }
 }

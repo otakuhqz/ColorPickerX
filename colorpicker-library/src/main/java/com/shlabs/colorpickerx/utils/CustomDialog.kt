@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.saggitt.colorpickerx.utils
+package com.shlabs.colorpickerx.utils
 
 import android.content.Context
 import android.os.Bundle

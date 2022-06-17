@@ -1,4 +1,4 @@
-package com.saggitt.colorpickerx.utils
+package com.shlabs.colorpickerx.utils
 
 import androidx.annotation.IntDef
 

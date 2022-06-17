@@ -15,10 +15,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.saggitt.colorpickerx;
+package com.shlabs.colorpickerx;
 
-import static com.saggitt.colorpickerx.utils.ColorUtils.dip2px;
-import static com.saggitt.colorpickerx.utils.ColorUtils.getDimensionDp;
+import static com.shlabs.colorpickerx.utils.ColorUtils.dip2px;
+import static com.shlabs.colorpickerx.utils.ColorUtils.getDimensionDp;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -45,13 +45,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
-import com.saggitt.colorpickerx.utils.ColorUtils;
-import com.saggitt.colorpickerx.utils.ColorViewAdapter;
-import com.saggitt.colorpickerx.utils.CustomDialog;
-import com.saggitt.colorpickerx.utils.CustomPagerAdapter;
-import com.saggitt.colorpickerx.views.ColorPal;
-import com.saggitt.colorpickerx.views.CustomPickerSelector;
-import com.saggitt.colorpickerx.views.PanelView;
+import com.shlabs.colorpickerx.utils.ColorUtils;
+import com.shlabs.colorpickerx.utils.ColorViewAdapter;
+import com.shlabs.colorpickerx.utils.CustomDialog;
+import com.shlabs.colorpickerx.utils.CustomPagerAdapter;
+import com.shlabs.colorpickerx.views.ColorPal;
+import com.shlabs.colorpickerx.views.CustomPickerSelector;
+import com.shlabs.colorpickerx.views.PanelView;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
