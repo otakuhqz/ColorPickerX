@@ -107,25 +107,19 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         if (!showAlphaSlider) {
             hexEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
         }
-        newColorPanel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (newColorPanel.getColor() == color) {
-                    onColorSelected(color);
-                    //dismiss();
-                }
+        newColorPanel.setOnClickListener(v -> {
+            if (newColorPanel.getColor() == color) {
+                onColorSelected(color);
+                //dismiss();
             }
         });
         colorPicker.setOnColorChangedListener(this);
         hexEditText.addTextChangedListener(this);
 
-        hexEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(hexEditText, InputMethodManager.SHOW_IMPLICIT);
-                }
+        hexEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(hexEditText, InputMethodManager.SHOW_IMPLICIT);
             }
         });
     }
@@ -289,45 +283,39 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
 
         positiveButton.setText(positiveText);
         neutralButton.setText(neutralText);
-        positiveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onChooseColorListener != null && !fastChooser)
-                    onChooseColorListener.onChooseColor(-1, newColorPanel.getColor());
+        positiveButton.setOnClickListener(v -> {
+            if (onChooseColorListener != null && !fastChooser)
+                onChooseColorListener.onChooseColor(-1, newColorPanel.getColor());
 
-                if (dismiss) {
-                    dismissDialog();
-                    if (onFastChooseColorListener != null) {
-                        onFastChooseColorListener.onCancel();
-                    }
+            if (dismiss) {
+                dismissDialog();
+                if (onFastChooseColorListener != null) {
+                    onFastChooseColorListener.onCancel();
                 }
             }
         });
 
 
-        neutralButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int tempColor = 0;
-                if (onChooseColorListener != null && !fastChooser) {
-                    onChooseColorListener.onChooseColor(-1, newColorPanel.getColor());
-                    tempColor = newColorPanel.getColor();
-                }
-                if (dismiss)
-                    dismissDialog();
-                if (onChooseColorListener != null)
-                    onChooseColorListener.onCancel();
-                ColorSelectorPresets colorPicker = new ColorSelectorPresets(v.getContext());
-                colorPicker.setTitle(title)
-                        .setColumns(4)
-                        .setColorButtonSize(48, 48)
-                        .setRoundColorButton(true)
-                        .setTitle(title)
-                        .setOnChooseColorListener(onChooseColorListener)
-                        .setDefaultColorButton(tempColor)
-                        .show();
-
+        neutralButton.setOnClickListener(v -> {
+            int tempColor = 0;
+            if (onChooseColorListener != null && !fastChooser) {
+                onChooseColorListener.onChooseColor(-1, newColorPanel.getColor());
+                tempColor = newColorPanel.getColor();
             }
+            if (dismiss)
+                dismissDialog();
+            if (onChooseColorListener != null)
+                onChooseColorListener.onCancel();
+            ColorSelectorPresets colorPicker = new ColorSelectorPresets(v.getContext());
+            colorPicker.setTitle(title)
+                    .setColumns(4)
+                    .setColorButtonSize(48, 48)
+                    .setRoundColorButton(true)
+                    .setTitle(title)
+                    .setOnChooseColorListener(onChooseColorListener)
+                    .setDefaultColorButton(tempColor)
+                    .show();
+
         });
 
 
@@ -342,8 +330,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
-            //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.95);
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }

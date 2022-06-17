@@ -145,25 +145,19 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
             hexEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
         }
 
-        newColorPanel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (newColorPanel.getColor() == color) {
-                    onColorSelected(color);
-                    //dismiss();
-                }
+        newColorPanel.setOnClickListener(v -> {
+            if (newColorPanel.getColor() == color) {
+                onColorSelected(color);
+                //dismiss();
             }
         });
         colorPicker.setOnColorChangedListener(this);
         hexEditText.addTextChangedListener(this);
 
-        hexEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(hexEditText, InputMethodManager.SHOW_IMPLICIT);
-                }
+        hexEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(hexEditText, InputMethodManager.SHOW_IMPLICIT);
             }
         });
     }
@@ -340,31 +334,25 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
 
         positiveButton.setText(positiveText);
         negativeButton.setText(negativeText);
-        positiveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onChooseColorListener != null && !fastChooser)
-                    if (viewPager.getCurrentItem() == 0) {
-                        onChooseColorListener.onChooseColor(-1, newColorPanel.getColor());
-                    } else {
-                        onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
-                    }
-                if (dismiss) {
-                    dismissDialog();
-                    if (onFastChooseColorListener != null) {
-                        onFastChooseColorListener.onCancel();
-                    }
+        positiveButton.setOnClickListener(v -> {
+            if (onChooseColorListener != null && !fastChooser)
+                if (viewPager.getCurrentItem() == 0) {
+                    onChooseColorListener.onChooseColor(-1, newColorPanel.getColor());
+                } else {
+                    onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
+                }
+            if (dismiss) {
+                dismissDialog();
+                if (onFastChooseColorListener != null) {
+                    onFastChooseColorListener.onCancel();
                 }
             }
         });
-        negativeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (dismiss)
-                    dismissDialog();
-                if (onChooseColorListener != null)
-                    onChooseColorListener.onCancel();
-            }
+        negativeButton.setOnClickListener(v -> {
+            if (dismiss)
+                dismissDialog();
+            if (onChooseColorListener != null)
+                onChooseColorListener.onCancel();
         });
 
         if (mDialog == null) {
@@ -378,8 +366,7 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
-            //lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.90);
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }
