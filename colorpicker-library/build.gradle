@@ -56,14 +56,14 @@ afterEvaluate {
                 version = name
             }
             // Creates a Maven publication called “debug”.
-            debug(MavenPublication) {
+            /*debug(MavenPublication) {
                 // Applies the component for the debug build variant.
                 from components.debug
 
                 groupId = 'com.saulhdev.colorpickerx'
                 artifactId = 'final-debug'
                 version = name
-            }
+            }*/
         }
     }
 }
