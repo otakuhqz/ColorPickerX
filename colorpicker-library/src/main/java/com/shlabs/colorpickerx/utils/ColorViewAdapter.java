@@ -134,7 +134,7 @@ public class ColorViewAdapter extends RecyclerView.Adapter<ColorViewAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         int color = mDataset.get(position).getColor();
 
-        int textColor = ColorUtils.isWhiteText(color) ? Color.WHITE : Color.BLACK;
+        int textColor = ColorUtils.Companion.isWhiteText(color) ? Color.WHITE : Color.BLACK;
 
         if (mDataset.get(position).isCheck()) {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {

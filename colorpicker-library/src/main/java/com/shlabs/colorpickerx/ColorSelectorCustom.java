@@ -18,8 +18,7 @@
 
 package com.shlabs.colorpickerx;
 
-import static com.shlabs.colorpickerx.utils.ColorUtils.dip2px;
-import static com.shlabs.colorpickerx.utils.ColorUtils.getDimensionDp;
+import static com.shlabs.colorpickerx.utils.ColorUtils.Companion;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -40,7 +39,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
-import com.shlabs.colorpickerx.utils.ColorUtils;
 import com.shlabs.colorpickerx.utils.CustomDialog;
 import com.shlabs.colorpickerx.views.CustomPickerSelector;
 import com.shlabs.colorpickerx.views.PanelView;
@@ -135,7 +133,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
     @Override
     public void afterTextChanged(Editable s) {
         if (hexEditText.isFocused()) {
-            int color = ColorUtils.parseColorString(s.toString());
+            int color = Companion.parseColorString(s.toString());
             if (color != colorPicker.getColor()) {
                 fromEditText = true;
                 colorPicker.setColor(color, true);
@@ -222,15 +220,15 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-        params.setMargins(dip2px(10, mContext), 0, 0, 0);
+        params.setMargins(Companion.dip2px(10, mContext), 0, 0, 0);
         Button button = new Button(mContext);
-        button.setMinWidth(getDimensionDp(R.dimen.action_button_min_width, mContext));
-        button.setMinimumWidth(getDimensionDp(R.dimen.action_button_min_width, mContext));
+        button.setMinWidth(Companion.getDimensionDp(R.dimen.action_button_min_width, mContext));
+        button.setMinimumWidth(Companion.getDimensionDp(R.dimen.action_button_min_width, mContext));
         button.setPadding(
-                getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + dip2px(5, mContext), 0,
-                getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + dip2px(5, mContext), 0);
+                Companion.getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + Companion.dip2px(5, mContext), 0,
+                Companion.getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + Companion.dip2px(5, mContext), 0);
         button.setBackgroundResource(R.drawable.button);
-        button.setTextSize(getDimensionDp(R.dimen.action_button_text_size, mContext));
+        button.setTextSize(Companion.getDimensionDp(R.dimen.action_button_text_size, mContext));
         button.setTextColor(ContextCompat.getColor(mContext, R.color.black_de));
 
         button.setText(text);
@@ -257,8 +255,8 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         if (title != null) {
             titleView.setText(title);
             titleView.setPadding(
-                    dip2px(paddingTitleLeft, mContext), dip2px(paddingTitleTop, mContext),
-                    dip2px(paddingTitleRight, mContext), dip2px(paddingTitleBottom, mContext));
+                    Companion.dip2px(paddingTitleLeft, mContext), Companion.dip2px(paddingTitleTop, mContext),
+                    Companion.dip2px(paddingTitleRight, mContext), Companion.dip2px(paddingTitleBottom, mContext));
         }
         mDialog = new WeakReference<>(new CustomDialog(mContext, dialogViewLayout));
 

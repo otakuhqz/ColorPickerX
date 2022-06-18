@@ -17,8 +17,7 @@
  */
 package com.shlabs.colorpickerx;
 
-import static com.shlabs.colorpickerx.utils.ColorUtils.dip2px;
-import static com.shlabs.colorpickerx.utils.ColorUtils.getDimensionDp;
+import static com.shlabs.colorpickerx.utils.ColorUtils.Companion;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -45,7 +44,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
-import com.shlabs.colorpickerx.utils.ColorUtils;
 import com.shlabs.colorpickerx.utils.ColorViewAdapter;
 import com.shlabs.colorpickerx.utils.CustomDialog;
 import com.shlabs.colorpickerx.utils.CustomPagerAdapter;
@@ -173,7 +171,7 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
     @Override
     public void afterTextChanged(Editable s) {
         if (hexEditText.isFocused()) {
-            int color = ColorUtils.parseColorString(s.toString());
+            int color = Companion.parseColorString(s.toString());
             if (color != colorPicker.getColor()) {
                 fromEditText = true;
                 colorPicker.setColor(color, true);
@@ -310,11 +308,11 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
         }
         if (marginColorButtonBottom != 0 || marginColorButtonLeft != 0 || marginColorButtonRight != 0 || marginColorButtonTop != 0) {
             colorViewAdapter.setColorButtonMargin(
-                    dip2px(marginColorButtonLeft, mContext), dip2px(marginColorButtonTop, mContext),
-                    dip2px(marginColorButtonRight, mContext), dip2px(marginColorButtonBottom, mContext));
+                    Companion.dip2px(marginColorButtonLeft, mContext), Companion.dip2px(marginColorButtonTop, mContext),
+                    Companion.dip2px(marginColorButtonRight, mContext), Companion.dip2px(marginColorButtonBottom, mContext));
         }
         if (colorButtonHeight != 0 || colorButtonWidth != 0) {
-            colorViewAdapter.setColorButtonSize(dip2px(colorButtonWidth, mContext), dip2px(colorButtonHeight, mContext));
+            colorViewAdapter.setColorButtonSize(Companion.dip2px(colorButtonWidth, mContext), Companion.dip2px(colorButtonHeight, mContext));
         }
         if (roundColorButton) {
             setColorButtonDrawable(R.drawable.round_button);
@@ -510,15 +508,15 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-        params.setMargins(dip2px(10, mContext), 0, 0, 0);
+        params.setMargins(Companion.dip2px(10, mContext), 0, 0, 0);
         Button button = new Button(mContext);
-        button.setMinWidth(getDimensionDp(R.dimen.action_button_min_width, mContext));
-        button.setMinimumWidth(getDimensionDp(R.dimen.action_button_min_width, mContext));
+        button.setMinWidth(Companion.getDimensionDp(R.dimen.action_button_min_width, mContext));
+        button.setMinimumWidth(Companion.getDimensionDp(R.dimen.action_button_min_width, mContext));
         button.setPadding(
-                getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + dip2px(5, mContext), 0,
-                getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + dip2px(5, mContext), 0);
+                Companion.getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + Companion.dip2px(5, mContext), 0,
+                Companion.getDimensionDp(R.dimen.action_button_padding_horizontal, mContext) + Companion.dip2px(5, mContext), 0);
         button.setBackgroundResource(R.drawable.button);
-        button.setTextSize(getDimensionDp(R.dimen.action_button_text_size, mContext));
+        button.setTextSize(Companion.getDimensionDp(R.dimen.action_button_text_size, mContext));
         button.setTextColor(ContextCompat.getColor(mContext, R.color.black_de));
 
         button.setOnClickListener(new View.OnClickListener() {
