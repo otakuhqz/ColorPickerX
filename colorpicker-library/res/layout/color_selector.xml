@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_background_inset"
-    android:id="@+id/colorpicker_base"
-    android:theme="@style/DialogTheme">
+    android:id="@+id/colorpicker_base">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
@@ -37,25 +36,24 @@
         android:id="@+id/buttons_layout"
         android:gravity="end">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/neutral_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp" />
-
-        <Button
-            android:id="@+id/positive"
+            android:theme="@style/Widget.Material3.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@android:string/ok"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/positive"
+            android:theme="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:text="@android:string/ok" />
     </RelativeLayout>
 
 </RelativeLayout>

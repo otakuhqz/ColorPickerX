@@ -36,6 +36,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/negative"
+            android:theme="@style/Widget.Material3.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -43,6 +44,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/positive"
+            android:theme="@style/Widget.Material3.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@android:string/ok"

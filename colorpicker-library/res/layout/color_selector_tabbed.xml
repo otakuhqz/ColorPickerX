@@ -56,13 +56,15 @@
             android:id="@+id/negative"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:theme="@style/Widget.Material3.Button" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
+            android:theme="@style/Widget.Material3.Button"
             android:id="@+id/positive" />
     </LinearLayout>
 

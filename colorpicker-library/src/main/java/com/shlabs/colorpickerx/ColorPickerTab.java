@@ -293,9 +293,9 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
         else
             colorViewAdapter = new ColorViewAdapter(colors);
         if (fullHeight) {
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.MATCH_PARENT);
-            //lp.addRule(RelativeLayout.BELOW, titleView.getId());
             lp.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
             recyclerView.setLayoutParams(lp);
         }
@@ -362,7 +362,9 @@ public class ColorPickerTab implements CustomPickerSelector.OnColorChangedListen
         Dialog dialog = mDialog.get();
 
         if (dialog != null) {
+
             dialog.show();
+
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());

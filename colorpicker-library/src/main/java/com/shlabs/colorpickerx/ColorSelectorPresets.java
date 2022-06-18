@@ -38,6 +38,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.shlabs.colorpickerx.utils.ColorViewAdapter;
 import com.shlabs.colorpickerx.utils.CustomDialog;
 import com.shlabs.colorpickerx.views.ColorPal;
@@ -78,8 +79,8 @@ public class ColorSelectorPresets {
     private int paddingTitleLeft, paddingTitleRight, paddingTitleBottom, paddingTitleTop;
     private final View dialogViewLayout;
     private boolean disableDefaultButtons;
-    private final Button positiveButton;
-    private final Button neutralButton;
+    private final MaterialButton positiveButton;
+    private final MaterialButton neutralButton;
     private final int[] materialColors = {
             0XFFF44336,
             0XFFE91E63,
@@ -224,7 +225,7 @@ public class ColorSelectorPresets {
             colorViewAdapter = new ColorViewAdapter(colors);
 
         if (fullHeight) {
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
             lp.addRule(RelativeLayout.BELOW, titleView.getId());
             lp.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
             recyclerView.setLayoutParams(lp);
@@ -265,41 +266,35 @@ public class ColorSelectorPresets {
         positiveButton.setText(positiveText);
         neutralButton.setText(neutralText);
 
-        positiveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onChooseColorListener != null && !fastChooser)
-                    onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
-                if (dismiss) {
-                    dismissDialog();
-                    if (onFastChooseColorListener != null) {
-                        onFastChooseColorListener.onCancel();
-                    }
+        positiveButton.setOnClickListener(v -> {
+            if (onChooseColorListener != null && !fastChooser)
+                onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
+            if (dismiss) {
+                dismissDialog();
+                if (onFastChooseColorListener != null) {
+                    onFastChooseColorListener.onCancel();
                 }
             }
         });
 
-        neutralButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int tempColor = 0;
-                if (onChooseColorListener != null && !fastChooser) {
-                    onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(),
-                            colorViewAdapter.getColorSelected());
-                    tempColor = colorViewAdapter.getColorSelected();
-                }
-                if (dismiss)
-                    dismissDialog();
-                if (onChooseColorListener != null)
-                    onChooseColorListener.onCancel();
-                ColorSelectorCustom colorPicker = new ColorSelectorCustom(v.getContext());
-                colorPicker
-                        .setTitle(title)
-                        .setDefaultColorButton(tempColor)
-                        .setOnChooseColorListener(onChooseColorListener)
-                        .show();
-
+        neutralButton.setOnClickListener(v -> {
+            int tempColor = 0;
+            if (onChooseColorListener != null && !fastChooser) {
+                onChooseColorListener.onChooseColor(colorViewAdapter.getColorPosition(),
+                        colorViewAdapter.getColorSelected());
+                tempColor = colorViewAdapter.getColorSelected();
             }
+            if (dismiss)
+                dismissDialog();
+            if (onChooseColorListener != null)
+                onChooseColorListener.onCancel();
+            ColorSelectorCustom colorPicker = new ColorSelectorCustom(mContext);
+            colorPicker
+                    .setTitle(title)
+                    .setDefaultColorButton(tempColor)
+                    .setOnChooseColorListener(onChooseColorListener)
+                    .show();
+
         });
 
         if (mDialog == null) {
@@ -309,11 +304,13 @@ public class ColorSelectorPresets {
         Dialog dialog = mDialog.get();
 
         if (dialog != null) {
+
             dialog.show();
+
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
-            lp.width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.95);
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(lp);
         }
@@ -478,12 +475,7 @@ public class ColorSelectorPresets {
         button.setTextSize(getDimensionDp(R.dimen.action_button_text_size, mContext));
         button.setTextColor(ContextCompat.getColor(mContext, R.color.black_de));
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onClick(v, colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected());
-            }
-        });
+        button.setOnClickListener(v -> listener.onClick(v, colorViewAdapter.getColorPosition(), colorViewAdapter.getColorSelected()));
         button.setText(text);
         if (button.getParent() != null)
             buttons_layout.removeView(button);
@@ -609,7 +601,7 @@ public class ColorSelectorPresets {
      *
      * @return this
      */
-    private ColorSelectorPresets setColors() {
+    private ColorSelectorPresets setDefaultColors() {
         if (mContext == null)
             return this;
 

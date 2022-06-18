@@ -81,7 +81,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
 
     public ColorSelectorCustom(Context context) {
         dialogViewLayout = LayoutInflater.from(context).inflate(R.layout.color_selector_custom, null, false);
-        colorpicker_base = dialogViewLayout.findViewById(R.id.colorpicker_base);
+        colorpicker_base = dialogViewLayout.findViewById(R.id.colorpicker_custom_base);
         buttons_layout = dialogViewLayout.findViewById(R.id.buttons_layout);
         positiveButton = dialogViewLayout.findViewById(R.id.positive);
         neutralButton = dialogViewLayout.findViewById(R.id.neutral_button);
@@ -184,7 +184,6 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         return this;
     }
 
-
     public ColorSelectorCustom setDefaultColorButton(int color) {
         oldColorPanel.setColor(color);
         newColorPanel.setColor(color);
@@ -200,7 +199,6 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         dismissDialog();
         return this;
     }
-
 
     public ColorSelectorCustom setOnChooseColorListener(OnChooseColorListener listener) {
         onChooseColorListener = listener;
@@ -265,9 +263,9 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         mDialog = new WeakReference<>(new CustomDialog(mContext, dialogViewLayout));
 
         if (fullHeight) {
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.MATCH_PARENT);
-            //lp.addRule(RelativeLayout.BELOW, titleView.getId());
             lp.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
             colorpicker_base.setLayoutParams(lp);
         }
@@ -306,7 +304,7 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
                 dismissDialog();
             if (onChooseColorListener != null)
                 onChooseColorListener.onCancel();
-            ColorSelectorPresets colorPicker = new ColorSelectorPresets(v.getContext());
+            ColorSelectorPresets colorPicker = new ColorSelectorPresets(mContext);
             colorPicker.setTitle(title)
                     .setColumns(4)
                     .setColorButtonSize(48, 48)
@@ -326,7 +324,9 @@ public class ColorSelectorCustom implements CustomPickerSelector.OnColorChangedL
         Dialog dialog = mDialog.get();
 
         if (dialog != null) {
+
             dialog.show();
+
             //Keep mDialog open when rotate
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
             lp.copyFrom(dialog.getWindow().getAttributes());
