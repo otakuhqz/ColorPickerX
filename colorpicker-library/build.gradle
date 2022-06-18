@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: "com.jfrog.artifactory"
 
 android {
     compileSdkVersion 32
@@ -37,6 +38,32 @@ android {
             res.srcDirs = ['res']
             java.srcDirs = ['src']
             manifest.srcFile 'src/AndroidManifest.xml'
+        }
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.saulhdev.colorpickerx'
+                artifactId = 'library'
+                version = name
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = 'com.saulhdev.colorpickerx'
+                artifactId = 'library-debug'
+                version = name
+            }
         }
     }
 }

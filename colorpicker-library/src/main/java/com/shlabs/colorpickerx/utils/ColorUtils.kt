@@ -55,7 +55,7 @@ class ColorUtils {
             var colorString = color
             val stringLength = colorString.length
 
-            var a = 0
+            val a: Int
             var r = 0
             var g = 0
             var b = 0
