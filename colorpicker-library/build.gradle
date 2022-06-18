@@ -52,7 +52,7 @@ afterEvaluate {
 
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.saulhdev.colorpickerx'
-                artifactId = 'library'
+                artifactId = 'final'
                 version = name
             }
             // Creates a Maven publication called “debug”.
@@ -61,7 +61,7 @@ afterEvaluate {
                 from components.debug
 
                 groupId = 'com.saulhdev.colorpickerx'
-                artifactId = 'library-debug'
+                artifactId = 'final-debug'
                 version = name
             }
         }
