@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~  This file is part of ColorPickerX
-  ~  Copyright (c) 2021   Saul Henriquez
+  ~  Copyright (c) 2022   Saul Henriquez
   ~
   ~  This program is free software: you can redistribute it and/or modify
   ~  it under the terms of the GNU General Public License as
@@ -22,6 +22,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/color"
+        android:elevation="2dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_width="48dp"
@@ -33,5 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:elevation="2dp"
         android:src="@drawable/ic_check_mark" />
 </RelativeLayout>
