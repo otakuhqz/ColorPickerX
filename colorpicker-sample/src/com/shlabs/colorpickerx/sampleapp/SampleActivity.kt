@@ -178,7 +178,7 @@ fun MainScreen() {
                             .setDefaultColorButton(android.graphics.Color.WHITE)
                             .setColors(colors)
                             .setColumns(5)
-                            .showAlpha(true)
+                            .showAlpha(false)
                             .setOnChooseColorListener(object : OnChooseColorListener {
                                 override fun onChooseColor(position: Int, color: Int) {
                                     Log.d("position", "" + color)
