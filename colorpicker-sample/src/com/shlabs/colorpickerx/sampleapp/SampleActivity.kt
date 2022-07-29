@@ -41,10 +41,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.accompanist.insets.ui.LocalScaffoldPadding
-import com.shlabs.colorpickerx.ColorPicker
-import com.shlabs.colorpickerx.ColorPickerTab
-import com.shlabs.colorpickerx.ColorSelectorPresets
-import com.shlabs.colorpickerx.OnChooseColorListener
+import com.shlabs.colorpickerx.*
 
 class SampleActivity : AppCompatActivity() {
 
@@ -178,8 +175,7 @@ fun MainScreen() {
                             .setDefaultColorButton(android.graphics.Color.WHITE)
                             .setColors(colors)
                             .setColumns(5)
-                            .showAlpha(false)
-                            .setOnChooseColorListener(object : OnChooseColorListener {
+                            .showAlpha(false).setOnChooseColorListener(object : OnChooseColorListener {
                                 override fun onChooseColor(position: Int, color: Int) {
                                     Log.d("position", "" + color)
                                 }
